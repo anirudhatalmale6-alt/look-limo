@@ -144,6 +144,9 @@ def write(name, html):
 # =====================================================================
 home_body = f"""
 <section class="hero" id="home">
+  <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
+    <source src="assets/hero-video.mp4" type="video/mp4" />
+  </video>
   <div class="hero__overlay"></div>
   <div class="container hero__inner">
     <p class="hero__eyebrow">Philadelphia's Luxury Chauffeured Transportation</p>
