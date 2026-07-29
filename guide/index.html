@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Look Limo — How to Edit Your Website (Video Guide)</title>
+<meta name="robots" content="noindex" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0a0a0c;color:#f2f2f2;font-family:'Jost',system-ui,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:32px 18px 60px}
+  .wrap{width:100%;max-width:900px}
+  .top{text-align:center;margin-bottom:26px}
+  .kicker{color:#c9a44c;letter-spacing:3px;text-transform:uppercase;font-size:.8rem;font-weight:600}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:2.3rem;margin:.35rem 0 .2rem;color:#fff}
+  h1 span{color:#e8c877}
+  .sub{color:#b9b9bd;font-size:1.02rem;font-weight:300}
+  .player{position:relative;border:2px solid #c9a44c;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#000}
+  video{display:block;width:100%;height:auto;background:#000}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
+  .btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:600;text-decoration:none;font-size:.98rem;transition:transform .15s,box-shadow .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn--gold{background:linear-gradient(135deg,#e8c877,#c9a44c);color:#141007;box-shadow:0 8px 22px rgba(201,164,76,.35)}
+  .btn--ghost{border:1px solid #55555c;color:#eee}
+  .steps{margin-top:38px;background:#111114;border:1px solid #24242a;border-radius:14px;padding:26px 28px}
+  .steps h2{font-family:'Cormorant Garamond',serif;color:#e8c877;font-size:1.5rem;margin-bottom:14px;font-weight:600}
+  .steps ol{list-style:none;counter-reset:s}
+  .steps li{counter-increment:s;position:relative;padding:10px 0 10px 46px;border-bottom:1px solid #1e1e24}
+  .steps li:last-child{border-bottom:0}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:9px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#e8c877,#c9a44c);color:#141007;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+  .steps b{color:#fff}
+  .foot{text-align:center;color:#8a8a90;font-size:.9rem;margin-top:30px}
+  .foot a{color:#e8c877;text-decoration:none}
+  @media(max-width:560px){h1{font-size:1.8rem}.steps{padding:20px}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="kicker">Look Limo</div>
+      <h1>How to Edit Your <span>Website</span></h1>
+      <p class="sub">A quick walkthrough — press play below. Nothing to download.</p>
+    </div>
+
+    <div class="player">
+      <video controls autoplay muted playsinline preload="auto" poster="poster.jpg">
+        <source src="edit-guide.mp4" type="video/mp4" />
+        Your browser can’t play this video. <a href="edit-guide.mp4">Tap here to download it</a>.
+      </video>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn--gold" href="edit-guide.mp4" download>Download the video</a>
+      <a class="btn btn--ghost" href="../">Open the live website</a>
+    </div>
+
+    <div class="steps">
+      <h2>The same steps, in writing</h2>
+      <ol>
+        <li>Open your files on GitHub — each page of the site is a <b>.html</b> file (<b>index.html</b> is the home page).</li>
+        <li>Click a page, then click the <b>pencil (Edit)</b> icon near the top-right of the file.</li>
+        <li>Change the wording, scroll down and click the green <b>Commit changes</b> button to save.</li>
+        <li>To swap a photo or the hero video, open the <b>assets</b> folder and upload your file using the <b>same filename</b> (e.g. logo.jpg, hero-video.mp4).</li>
+        <li>GitHub republishes the site automatically — refresh in about a minute and your change is live.</li>
+      </ol>
+    </div>
+
+    <p class="foot">Prefer I make the change for you? Just message me anytime — happy to handle any edit directly.</p>
+  </div>
+</body>
+</html>
