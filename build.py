@@ -144,18 +144,17 @@ def write(name, html):
 # =====================================================================
 home_body = f"""
 <section class="hero" id="home">
-  <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg">
-    <source src="assets/hero-video.mp4" type="video/mp4" />
-  </video>
-  <div class="hero__overlay"></div>
   <div class="container hero__inner">
     <p class="hero__welcome">Welcome to</p>
     <h1 class="hero__brand">Look Limo</h1>
-    <p class="hero__tag">A Smarter Way to Ride</p>
+    <p class="hero__tag">A Luxury Way to Ride</p>
     <div class="hero__cta">
       <a href="fleet.html" class="btn btn--gold btn--lg">View Fleet</a>
       <a href="contact.html" class="btn btn--ghost btn--lg">Get a Quote</a>
     </div>
+  </div>
+  <div class="hero__media">
+    <img src="assets/hero-image.jpg" alt="Look Limo Cadillac Escalade at Philadelphia International Airport with the Philadelphia skyline" />
   </div>
 </section>
 
