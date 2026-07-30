@@ -305,7 +305,7 @@ write("index.html",
 # =====================================================================
 about_body = pagehero("About <span>Look Limo</span>",
     "Philadelphia's trusted name in luxury chauffeured transportation.",
-    {"name": "About", "bg": "fleet-vip.jpg"}) + f"""
+    {"name": "About", "bg": "fleet-escalade.jpg"}) + f"""
 <section class="section">
   <div class="container prose center">
     <p class="eyebrow">Our Story</p>
@@ -435,7 +435,7 @@ service_page(
     "svc-airport.jpg", "Airport Transfers",
     "On-Time Airport Service, Every Time",
     "<p>Never watch the clock again. Look Limo monitors your flight in real time, adjusts for delays automatically and has your chauffeur waiting when you land - luggage assistance included.</p><p>We serve Philadelphia International (PHL), Newark Liberty (EWR), Trenton-Mercer and other regional airports, with meet-and-greet arrivals and curbside departures.</p>",
-    "fleet-sedan.jpg",
+    "fleet-suburban.jpg",
     [("&#9992;", "Flight Tracking", "We watch your flight and adjust pickup automatically for early or delayed arrivals."),
      ("&#129309;", "Meet &amp; Greet", "Your chauffeur greets you at arrivals and helps with your luggage."),
      ("&#128176;", "Flat-Rate Pricing", "Know your fare upfront - no surge pricing, no surprises.")])
@@ -447,7 +447,7 @@ service_page(
     "svc-corporate.jpg", "Corporate Travel",
     "Impeccable Travel for Business",
     "<p>From airport pickups for visiting executives to full-day roadshows and client entertainment, Look Limo delivers discreet, dependable corporate transportation across Philadelphia.</p><p>Set up a business account for simplified billing, priority booking and consistent service your whole team can rely on.</p>",
-    "fleet-exec.jpg",
+    "fleet-sprinter.jpg",
     [("&#128188;", "Executive Fleet", "Luxury sedans and SUVs that make the right impression on clients."),
      ("&#128274;", "Discreet &amp; Reliable", "Professional chauffeurs trained in privacy and punctuality."),
      ("&#129534;", "Corporate Accounts", "Simplified billing, priority booking and dedicated support.")])
@@ -493,7 +493,7 @@ fleet_body = pagehero("Our <span>Fleet</span>",
 """.replace("{FLEET_GRID}", FLEET_GRID).replace("{CTA}", CTA)
 write("fleet.html",
       head("Our Fleet | Look Limo Philadelphia",
-           "Explore the Look Limo fleet: luxury sedans, premium SUVs, executive coupes, VIP Rolls-Royce, executive coaches and motor coaches. Chauffeured luxury for every group size.")
+           "Explore the Look Limo fleet: Cadillac Escalade, Lincoln Aviator, Chevy Suburban, Mercedes Executive Sprinter, minibus, luxury limo minibus and full-size bus. Chauffeured luxury for every group size.")
       + header("fleet.html") + fleet_body + FOOTER)
 
 # =====================================================================
@@ -537,7 +537,7 @@ write("faq.html",
 # =====================================================================
 contact_body = pagehero("Contact <span>Look Limo</span>",
     "Request a quote or book your ride - we reply fast, 24/7.",
-    {"name": "Contact", "bg": "fleet-exec.jpg"}) + f"""
+    {"name": "Contact", "bg": "fleet-aviator.jpg"}) + f"""
 <section class="section quote" id="quote">
   <div class="container contactgrid">
     <div class="quote__info">
