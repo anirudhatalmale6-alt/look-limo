@@ -41,10 +41,11 @@ MAKING EDITS
         python3 build.py
   That regenerates all the .html pages at once.
 
-SWAPPING THE HERO VIDEO
+SWAPPING THE HERO IMAGE
 -----------------------
-Replace assets/hero-video.mp4 with your own MP4 (keep the same name), and
-optionally assets/hero-poster.jpg with a still frame. Done.
+Replace assets/hero-image.jpg with your own photo (keep the same name). The
+home page shows it behind the "Welcome to Look Limo" heading, fading in from
+black. A wide or square photo with the subject centered works best.
 
 CONTACT DETAILS USED
 --------------------
