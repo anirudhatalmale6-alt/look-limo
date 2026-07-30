@@ -51,6 +51,17 @@
     });
   });
 
+  // service showcase switcher
+  var svcBtns = document.querySelectorAll('.svcnav__btn');
+  var svcPanels = document.querySelectorAll('.spanel');
+  svcBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var key = btn.getAttribute('data-svc');
+      svcBtns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+      svcPanels.forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-svc') === key); });
+    });
+  });
+
   // animated counters
   function animateCount(el) {
     var target = parseInt(el.getAttribute('data-count'), 10);

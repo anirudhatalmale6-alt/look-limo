@@ -29,7 +29,7 @@ def head(title, desc):
 <link rel="icon" href="assets/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -149,62 +149,48 @@ home_body = f"""
   </video>
   <div class="hero__overlay"></div>
   <div class="container hero__inner">
-    <p class="hero__eyebrow">Philadelphia's Luxury Chauffeured Transportation</p>
-    <h1 class="hero__title">Arrive in <span>Style.</span><br />Travel in Comfort.</h1>
-    <p class="hero__sub">Look Limo delivers first-class limousine and car service across Philadelphia - personal trips, airport transfers, corporate travel and safe student transportation, every time.</p>
+    <p class="hero__welcome">Welcome to</p>
+    <h1 class="hero__brand">Look Limo</h1>
+    <p class="hero__tag">A Smarter Way to Ride</p>
     <div class="hero__cta">
-      <a href="contact.html" class="btn btn--gold btn--lg">Book Your Ride</a>
-      <a href="tel:{PHONE_TEL}" class="btn btn--ghost btn--lg">&#9742; Call {PHONE}</a>
-    </div>
-    <div class="hero__trust">
-      <div class="trust"><strong>200+</strong><span>Luxury Vehicles</span></div>
-      <div class="trust"><strong>24/7</strong><span>Availability</span></div>
-      <div class="trust"><strong>5&#9733;</strong><span>Chauffeur Service</span></div>
+      <a href="fleet.html" class="btn btn--gold btn--lg">View Fleet</a>
+      <a href="contact.html" class="btn btn--ghost btn--lg">Get a Quote</a>
     </div>
   </div>
 </section>
 
-<section class="section services" id="services">
-  <div class="container">
-    <div class="section__head">
-      <p class="eyebrow">What We Offer</p>
-      <h2 class="section__title">Our Services</h2>
-      <p class="section__lead">From the runway to the red carpet, every ride with Look Limo is polished, punctual and effortless.</p>
-    </div>
-    <div class="grid grid--4 services__grid">
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-personal.jpg')"></div>
-        <div class="scard__body">
-          <h3>Personal</h3>
-          <p>Convenient and reliable private transportation for everyday journeys and special occasions across Philadelphia.</p>
-          <a href="personal.html" class="scard__link">Learn More &rarr;</a>
-        </div>
-      </article>
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-airport.jpg')"></div>
-        <div class="scard__body">
-          <h3>Airport</h3>
-          <p>Prompt airport transportation for any business trip or vacation, with flight tracking and meet-and-greet.</p>
-          <a href="airport-transfers.html" class="scard__link">Learn More &rarr;</a>
-        </div>
-      </article>
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-corporate.jpg')"></div>
-        <div class="scard__body">
-          <h3>Corporate</h3>
-          <p>World-class executive and business transportation - discreet, reliable chauffeurs for meetings and clients.</p>
-          <a href="corporate-travel.html" class="scard__link">Learn More &rarr;</a>
-        </div>
-      </article>
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-school.jpg')"></div>
-        <div class="scard__body">
-          <h3>School</h3>
-          <p>Safe and reliable student transportation with vetted, background-checked chauffeurs families can trust.</p>
-          <a href="school.html" class="scard__link">Learn More &rarr;</a>
-        </div>
-      </article>
-    </div>
+<section class="svcshow" id="services">
+  <div class="svcshow__stage">
+    <a class="spanel active" data-svc="personal" href="personal.html" style="background-image:url('assets/svc-personal.jpg')">
+      <span class="spanel__cap"><span class="spanel__k">Our Services</span><h3>Personal</h3><p>Convenient and reliable private transportation services.</p><span class="spanel__go">Explore Personal &rarr;</span></span>
+    </a>
+    <a class="spanel" data-svc="corporate" href="corporate-travel.html" style="background-image:url('assets/svc-corporate.jpg')">
+      <span class="spanel__cap"><span class="spanel__k">Our Services</span><h3>Corporate</h3><p>World-class executive and business transportation service.</p><span class="spanel__go">Explore Corporate &rarr;</span></span>
+    </a>
+    <a class="spanel" data-svc="airport" href="airport-transfers.html" style="background-image:url('assets/svc-airport.jpg')">
+      <span class="spanel__cap"><span class="spanel__k">Our Services</span><h3>Airport</h3><p>Prompt airport transportation for any business trip or vacation worldwide.</p><span class="spanel__go">Explore Airport &rarr;</span></span>
+    </a>
+    <a class="spanel" data-svc="school" href="school.html" style="background-image:url('assets/svc-school.jpg')">
+      <span class="spanel__cap"><span class="spanel__k">Our Services</span><h3>School</h3><p>Safe and reliable student transportation service.</p><span class="spanel__go">Explore School &rarr;</span></span>
+    </a>
+  </div>
+  <div class="svcnav">
+    <button type="button" class="svcnav__btn active" data-svc="personal" aria-label="Personal">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      <span>Personal</span>
+    </button>
+    <button type="button" class="svcnav__btn" data-svc="corporate" aria-label="Corporate">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7"/><path d="M3 12h18"/></svg>
+      <span>Corporate</span>
+    </button>
+    <button type="button" class="svcnav__btn" data-svc="airport" aria-label="Airport">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15.5 13 11V4.5a1.5 1.5 0 0 0-3 0V11l-8 4.5v2l8-2.3V19l-2.2 1.6v1.4L11 22l3.2 1v-1.4L12 20v-3.8l9 2.3z"/></svg>
+      <span>Airport</span>
+    </button>
+    <button type="button" class="svcnav__btn" data-svc="school" aria-label="School">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2 9l10 5 10-5z"/><path d="M6 11v4.5c0 1.5 2.7 2.8 6 2.8s6-1.3 6-2.8V11"/><path d="M22 9v5"/></svg>
+      <span>School</span>
+    </button>
   </div>
 </section>
 
