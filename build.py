@@ -87,10 +87,10 @@ FOOTER = f"""
     </div>
     <div class="footer__col">
       <h4>Services</h4>
-      <a href="airport-transfers.html">Airport Transfers</a>
-      <a href="corporate-travel.html">Corporate &amp; Business</a>
-      <a href="weddings-events.html">Weddings &amp; Events</a>
-      <a href="nights-out.html">Nights Out &amp; Events</a>
+      <a href="personal.html">Personal</a>
+      <a href="airport-transfers.html">Airport</a>
+      <a href="corporate-travel.html">Corporate</a>
+      <a href="school.html">School</a>
     </div>
     <div class="footer__col">
       <h4>Company</h4>
@@ -151,7 +151,7 @@ home_body = f"""
   <div class="container hero__inner">
     <p class="hero__eyebrow">Philadelphia's Luxury Chauffeured Transportation</p>
     <h1 class="hero__title">Arrive in <span>Style.</span><br />Travel in Comfort.</h1>
-    <p class="hero__sub">Look Limo delivers first-class limousine and car service across Philadelphia - airport transfers, corporate travel, weddings and every occasion that deserves to be unforgettable.</p>
+    <p class="hero__sub">Look Limo delivers first-class limousine and car service across Philadelphia - personal trips, airport transfers, corporate travel and safe student transportation, every time.</p>
     <div class="hero__cta">
       <a href="contact.html" class="btn btn--gold btn--lg">Book Your Ride</a>
       <a href="tel:{PHONE_TEL}" class="btn btn--ghost btn--lg">&#9742; Call {PHONE}</a>
@@ -173,35 +173,35 @@ home_body = f"""
     </div>
     <div class="grid grid--4 services__grid">
       <article class="scard">
+        <div class="scard__img" style="background-image:url('assets/svc-personal.jpg')"></div>
+        <div class="scard__body">
+          <h3>Personal</h3>
+          <p>Convenient and reliable private transportation for everyday journeys and special occasions across Philadelphia.</p>
+          <a href="personal.html" class="scard__link">Learn More &rarr;</a>
+        </div>
+      </article>
+      <article class="scard">
         <div class="scard__img" style="background-image:url('assets/svc-airport.jpg')"></div>
         <div class="scard__body">
-          <h3>Airport Transfers</h3>
-          <p>On-time pickups and drop-offs for PHL Philadelphia International, Newark and beyond, with flight tracking and meet-and-greet.</p>
+          <h3>Airport</h3>
+          <p>Prompt airport transportation for any business trip or vacation, with flight tracking and meet-and-greet.</p>
           <a href="airport-transfers.html" class="scard__link">Learn More &rarr;</a>
         </div>
       </article>
       <article class="scard">
         <div class="scard__img" style="background-image:url('assets/svc-corporate.jpg')"></div>
         <div class="scard__body">
-          <h3>Corporate &amp; Business</h3>
-          <p>Executive travel that reflects your standards - discreet, reliable chauffeurs for meetings, roadshows and clients.</p>
+          <h3>Corporate</h3>
+          <p>World-class executive and business transportation - discreet, reliable chauffeurs for meetings and clients.</p>
           <a href="corporate-travel.html" class="scard__link">Learn More &rarr;</a>
         </div>
       </article>
       <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-wedding.jpg')"></div>
+        <div class="scard__img" style="background-image:url('assets/svc-school.jpg')"></div>
         <div class="scard__body">
-          <h3>Weddings &amp; Events</h3>
-          <p>Make your day flawless with elegant vehicles, red-carpet arrivals and a chauffeur dedicated to the details.</p>
-          <a href="weddings-events.html" class="scard__link">Learn More &rarr;</a>
-        </div>
-      </article>
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-events.jpg')"></div>
-        <div class="scard__body">
-          <h3>Nights Out &amp; Events</h3>
-          <p>Concerts, dinners, city tours or a night on the town - travel together in comfort and let us handle the driving.</p>
-          <a href="nights-out.html" class="scard__link">Learn More &rarr;</a>
+          <h3>School</h3>
+          <p>Safe and reliable student transportation with vetted, background-checked chauffeurs families can trust.</p>
+          <a href="school.html" class="scard__link">Learn More &rarr;</a>
         </div>
       </article>
     </div>
@@ -344,20 +344,20 @@ services_body = pagehero("Our <span>Services</span>",
   <div class="container">
     <div class="grid grid--4 services__grid">
       <article class="scard">
+        <div class="scard__img" style="background-image:url('assets/svc-personal.jpg')"></div>
+        <div class="scard__body"><h3>Personal</h3><p>Convenient and reliable private transportation for everyday journeys and special occasions.</p><a href="personal.html" class="scard__link">Learn More &rarr;</a></div>
+      </article>
+      <article class="scard">
         <div class="scard__img" style="background-image:url('assets/svc-airport.jpg')"></div>
-        <div class="scard__body"><h3>Airport Transfers</h3><p>Reliable rides to and from PHL, Newark and regional airports with flight tracking and meet-and-greet.</p><a href="airport-transfers.html" class="scard__link">Learn More &rarr;</a></div>
+        <div class="scard__body"><h3>Airport</h3><p>Prompt airport transportation for any business trip or vacation, with flight tracking and meet-and-greet.</p><a href="airport-transfers.html" class="scard__link">Learn More &rarr;</a></div>
       </article>
       <article class="scard">
         <div class="scard__img" style="background-image:url('assets/svc-corporate.jpg')"></div>
-        <div class="scard__body"><h3>Corporate &amp; Business</h3><p>Executive travel, roadshows and client transport handled with discretion and precision.</p><a href="corporate-travel.html" class="scard__link">Learn More &rarr;</a></div>
+        <div class="scard__body"><h3>Corporate</h3><p>World-class executive and business transportation handled with discretion and precision.</p><a href="corporate-travel.html" class="scard__link">Learn More &rarr;</a></div>
       </article>
       <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-wedding.jpg')"></div>
-        <div class="scard__body"><h3>Weddings &amp; Events</h3><p>Elegant wedding transportation and special-event packages built around your big day.</p><a href="weddings-events.html" class="scard__link">Learn More &rarr;</a></div>
-      </article>
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-events.jpg')"></div>
-        <div class="scard__body"><h3>Nights Out &amp; Events</h3><p>Concerts, dinners, sporting events, city tours and nights on the town, done in style.</p><a href="nights-out.html" class="scard__link">Learn More &rarr;</a></div>
+        <div class="scard__img" style="background-image:url('assets/svc-school.jpg')"></div>
+        <div class="scard__body"><h3>School</h3><p>Safe and reliable student transportation with vetted, background-checked chauffeurs.</p><a href="school.html" class="scard__link">Learn More &rarr;</a></div>
       </article>
     </div>
   </div>
@@ -438,28 +438,28 @@ service_page(
      ("&#129534;", "Corporate Accounts", "Simplified billing, priority booking and dedicated support.")])
 
 service_page(
-    "weddings-events.html", "Weddings & Events",
-    "Weddings &amp; <span>Events</span>",
-    "Make your special day flawless with elegant wedding transportation.",
-    "svc-wedding.jpg", "Weddings & Events",
-    "Your Perfect Day Deserves a Perfect Ride",
-    "<p>From the first look to the last dance, Look Limo makes sure every arrival is unforgettable. Choose our VIP Rolls-Royce or a spacious coach for the whole wedding party.</p><p>We coordinate timing with your planner, decorate on request and provide a dedicated chauffeur devoted entirely to your celebration.</p>",
-    "fleet-vip.jpg",
-    [("&#128141;", "Wedding Packages", "Tailored packages for the couple, party and guests."),
-     ("&#127881;", "Red-Carpet Arrivals", "Grand entrances and exits worthy of the occasion."),
-     ("&#128197;", "Dedicated Coordination", "We sync with your schedule so everything runs on time.")])
+    "personal.html", "Personal Transportation",
+    "Personal <span>Transportation</span>",
+    "Convenient, reliable private car service for everyday journeys and special occasions.",
+    "svc-personal.jpg", "Personal",
+    "Private Transportation, On Your Schedule",
+    "<p>Whether it's a dinner reservation, a night out, a special celebration or simply getting across town in comfort, Look Limo gives you a professional chauffeur and a spotless luxury vehicle whenever you need one.</p><p>No parking, no ride-share roulette - just a dependable, private ride that arrives on time and treats you like the guest of honor.</p>",
+    "svc-personal.jpg",
+    [("&#128663;", "Door-to-Door", "Private pickups and drop-offs anywhere in the Philadelphia region."),
+     ("&#9200;", "On Your Time", "Available 24/7 for planned trips or last-minute rides."),
+     ("&#10024;", "First-Class Comfort", "Immaculate vehicles and courteous, professional chauffeurs.")])
 
 service_page(
-    "nights-out.html", "Nights Out & Events",
-    "Nights Out &amp; <span>Events</span>",
-    "Concerts, dinners, sporting events and nights on the town - in style.",
-    "svc-events.jpg", "Nights Out",
-    "Enjoy the Night - We'll Handle the Driving",
-    "<p>Heading to a concert, a game, a birthday or a night out with friends? Travel together in comfort and never worry about parking, traffic or a designated driver.</p><p>From intimate dinners to full party-coach celebrations, Look Limo keeps the good times rolling safely across Philadelphia.</p>",
-    "fleet-motorcoach.jpg",
-    [("&#127908;", "Concerts &amp; Games", "Door-to-door service to every venue in the region."),
-     ("&#127862;", "Celebrations", "Birthdays, bachelor/ette parties and nights on the town."),
-     ("&#128100;", "Safe &amp; Simple", "No parking, no driving - just enjoy the evening.")])
+    "school.html", "School Transportation",
+    "School <span>Transportation</span>",
+    "Safe, reliable student transportation families and schools can count on.",
+    "svc-school.jpg", "School",
+    "Safe, Reliable Student Transportation",
+    "<p>Look Limo provides dependable school and student transportation with vetted, background-checked chauffeurs and well-maintained vehicles - so parents and schools have complete peace of mind.</p><p>From daily school runs to field trips and activity transport, we get students where they need to be safely and on time, every time.</p>",
+    "svc-school.jpg",
+    [("&#128274;", "Safety First", "Background-checked chauffeurs and thoroughly inspected vehicles."),
+     ("&#9200;", "Always On Time", "Punctual daily runs and reliable schedules parents can trust."),
+     ("&#128652;", "Groups &amp; Trips", "From individual students to field trips and activity transport.")])
 
 # =====================================================================
 # FLEET
@@ -543,10 +543,10 @@ contact_body = pagehero("Contact <span>Look Limo</span>",
       <div class="frow">
         <select name="service" required>
           <option value="" disabled selected>Service Type</option>
-          <option>Airport Transfer</option>
+          <option>Personal</option>
+          <option>Airport</option>
           <option>Corporate / Business</option>
-          <option>Wedding / Event</option>
-          <option>Night Out / Event</option>
+          <option>School / Student</option>
           <option>Other</option>
         </select>
         <input type="text" name="date" placeholder="Date &amp; Time" onfocus="(this.type='datetime-local')" onblur="if(!this.value)this.type='text'" required />
