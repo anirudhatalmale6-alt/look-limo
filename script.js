@@ -62,6 +62,18 @@
     });
   });
 
+  // fleet carousel arrows
+  var rail = document.getElementById('fleetRail');
+  if (rail) {
+    function railStep() {
+      var card = rail.querySelector('.vcard');
+      return card ? card.getBoundingClientRect().width + 24 : 320;
+    }
+    var pv = document.getElementById('fleetPrev'), nx = document.getElementById('fleetNext');
+    if (pv) pv.addEventListener('click', function () { rail.scrollBy({ left: -railStep(), behavior: 'smooth' }); });
+    if (nx) nx.addEventListener('click', function () { rail.scrollBy({ left: railStep(), behavior: 'smooth' }); });
+  }
+
   // animated counters
   function animateCount(el) {
     var target = parseInt(el.getAttribute('data-count'), 10);

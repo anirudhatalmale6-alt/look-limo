@@ -199,7 +199,7 @@ home_body = f"""
     <div class="section__head">
       <p class="eyebrow">The Fleet</p>
       <h2 class="section__title">A Vehicle for Every Occasion</h2>
-      <p class="section__lead">Immaculately maintained, chauffeur-driven and ready when you are - from luxury sedans to full-size coaches.</p>
+      <p class="section__lead">Immaculately maintained, chauffeur-driven and ready when you are - from the Cadillac Escalade to full-size coaches.</p>
     </div>
     __FLEETGRID__
     <div class="center mt2"><a href="fleet.html" class="btn btn--gold">View the Full Fleet</a></div>
@@ -237,34 +237,63 @@ home_body = f"""
 {CTA}
 """
 
-FLEET_GRID = """<div class="grid grid--3 fleet__grid">
-      <article class="fcard">
-        <div class="fcard__img" style="background-image:url('assets/fleet-sedan.jpg')"></div>
-        <div class="fcard__body"><span class="fcard__cap">Up to 3 Passengers</span><h3>Luxury Sedan</h3><p>Mercedes-Benz &amp; BMW class sedans for airport runs and business travel.</p></div>
-      </article>
-      <article class="fcard">
-        <div class="fcard__img" style="background-image:url('assets/fleet-suv.jpg')"></div>
-        <div class="fcard__body"><span class="fcard__cap">Up to 6 Passengers</span><h3>Premium SUV</h3><p>Cadillac Escalade &amp; full-size SUVs - space, presence and comfort.</p></div>
-      </article>
-      <article class="fcard">
-        <div class="fcard__img" style="background-image:url('assets/fleet-exec.jpg')"></div>
-        <div class="fcard__body"><span class="fcard__cap">Up to 3 Passengers</span><h3>Executive Coupe</h3><p>Sleek performance coupes for a bold, first-class arrival.</p></div>
-      </article>
-      <article class="fcard">
-        <div class="fcard__img" style="background-image:url('assets/fleet-vip.jpg')"></div>
-        <div class="fcard__body"><span class="fcard__cap">Up to 3 Passengers</span><h3>VIP Rolls-Royce</h3><p>The ultimate statement for weddings, galas and VIP occasions.</p></div>
-      </article>
-      <article class="fcard">
-        <div class="fcard__img" style="background-image:url('assets/fleet-coach.jpg')"></div>
-        <div class="fcard__body"><span class="fcard__cap">Up to 30 Passengers</span><h3>Executive Coach</h3><p>Luxury coach with reclining seating for corporate groups and tours.</p></div>
-      </article>
-      <article class="fcard">
-        <div class="fcard__img" style="background-image:url('assets/fleet-motorcoach.jpg')"></div>
-        <div class="fcard__body"><span class="fcard__cap">Up to 55 Passengers</span><h3>Motor Coach</h3><p>Full-size motor coach for large groups, events and long-distance travel.</p></div>
-      </article>
-    </div>"""
+# ---- Fleet data (client's exact vehicle list; Escalade first) ----
+_PERSON = '<circle cx="12" cy="8" r="3.3"/><path d="M5 20c0-3.6 3-6 7-6s7 2.4 7 6"/>'
+FEATURE_ICONS = {
+    "Flat-Screen TV": '<rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/>',
+    "Leather Seating": '<path d="M5 11V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5"/><path d="M4 11h16v4a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/><path d="M8 21v-3M16 21v-3"/>',
+    "Stereo System": '<circle cx="7" cy="17" r="2.4"/><circle cx="17" cy="15" r="2.4"/><path d="M9.4 17V6l10-2v11"/>',
+    "Privacy Panel": '<path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/>',
+    "Privacy Glass": '<path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/>',
+    "Overhead Luggage": '<rect x="5" y="7" width="14" height="12" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M9 19v2M15 19v2"/>',
+    "Power Outlets": '<path d="M9 3v5M15 3v5"/><path d="M6 8h12v2a6 6 0 0 1-12 0z"/><path d="M12 16v5"/>',
+    "Reading Lamp": '<path d="M8 3h8l2.4 8h-12.8z"/><path d="M12 11v7"/><path d="M8.5 21h7"/>',
+    "Premium Sound": '<rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="14" r="3.1"/><circle cx="12" cy="7" r="1"/>',
+    "Climate Control": '<path d="M12 2v20M4.5 6l15 12M19.5 6l-15 12"/>',
+}
+# (name, passengers, [features], image, "or similar" flag)
+VEHICLES = [
+    ("Cadillac Escalade", 6, ["Leather Seating", "Privacy Glass", "Premium Sound"], "fleet-escalade.jpg", False),
+    ("Lincoln Aviator", 3, ["Leather Seating", "Climate Control"], "fleet-aviator.jpg", True),
+    ("Chevy Suburban", 6, ["Leather Seating", "Reading Lamp"], "fleet-suburban.jpg", True),
+    ("Mercedes Executive Sprinter", 14, ["Flat-Screen TV", "Leather Seating", "Stereo System"], "fleet-sprinter.jpg", True),
+    ("Minibus", 24, ["Overhead Luggage", "Reading Lamp"], "fleet-minibus.jpg", False),
+    ("Luxury Limo Minibus", 30, ["Flat-Screen TV", "Privacy Panel", "Stereo System"], "fleet-limobus.jpg", False),
+    ("Bus", 35, ["Leather Seating", "Overhead Luggage", "Power Outlets"], "fleet-bus.jpg", False),
+]
 
-home_body = home_body.replace("__FLEETGRID__", FLEET_GRID)
+def _svg(inner):
+    return f'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">{inner}</svg>'
+
+def fleet_cards():
+    cards = ""
+    for name, pax, feats, img, sim in VEHICLES:
+        sim_html = '<span class="vcard__sim">or similar</span>' if sim else ''
+        feat_html = ""
+        for f in feats:
+            feat_html += f'<li>{_svg(FEATURE_ICONS.get(f, ""))}<span>{f}</span></li>'
+        cards += f"""      <article class="vcard">
+        <div class="vcard__img" style="background-image:url('assets/{img}')">
+          <span class="vcard__pax">{_svg(_PERSON)}{pax} Passengers</span>
+          <div class="vcard__title"><h3>{name}</h3>{sim_html}</div>
+        </div>
+        <ul class="vcard__feats">{feat_html}</ul>
+      </article>
+"""
+    return cards
+
+FLEET_CARDS = fleet_cards()
+
+# fleet.html uses a grid; home uses a swipeable carousel
+FLEET_GRID = '<div class="grid grid--3 fleet__grid">\n' + FLEET_CARDS + '    </div>'
+FLEET_HOME = ('<div class="fleetcarousel">\n'
+              '      <button type="button" class="fleetarrow fleetarrow--prev" id="fleetPrev" aria-label="Previous vehicle">&#8249;</button>\n'
+              '      <div class="fleetrail" id="fleetRail">\n' + FLEET_CARDS +
+              '      </div>\n'
+              '      <button type="button" class="fleetarrow fleetarrow--next" id="fleetNext" aria-label="Next vehicle">&#8250;</button>\n'
+              '    </div>')
+
+home_body = home_body.replace("__FLEETGRID__", FLEET_HOME)
 
 write("index.html",
       head("Look Limo | Luxury Limousine &amp; Chauffeur Service in Philadelphia",
@@ -451,7 +480,7 @@ service_page(
 # FLEET
 # =====================================================================
 fleet_body = pagehero("Our <span>Fleet</span>",
-    "Immaculately maintained luxury vehicles for parties of one to fifty-five.",
+    "Immaculately maintained luxury vehicles for parties of three to thirty-five.",
     {"name": "Fleet", "bg": "hero.jpg"}) + f"""
 <section class="section fleet">
   <div class="container">
