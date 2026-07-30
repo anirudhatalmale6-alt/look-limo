@@ -158,41 +158,6 @@ home_body = f"""
   </div>
 </section>
 
-<section class="svcshow" id="services">
-  <div class="svcshow__stage">
-    <a class="spanel active" data-svc="personal" href="personal.html" style="background-image:url('assets/svc-personal.jpg')">
-      <span class="spanel__cap"><span class="spanel__k">Our Services</span><h3>Personal</h3><p>Convenient and reliable private transportation services.</p><span class="spanel__go">Explore Personal &rarr;</span></span>
-    </a>
-    <a class="spanel" data-svc="corporate" href="corporate-travel.html" style="background-image:url('assets/svc-corporate.jpg')">
-      <span class="spanel__cap"><span class="spanel__k">Our Services</span><h3>Corporate</h3><p>World-class executive and business transportation service.</p><span class="spanel__go">Explore Corporate &rarr;</span></span>
-    </a>
-    <a class="spanel" data-svc="airport" href="airport-transfers.html" style="background-image:url('assets/svc-airport.jpg')">
-      <span class="spanel__cap"><span class="spanel__k">Our Services</span><h3>Airport</h3><p>Prompt airport transportation for any business trip or vacation worldwide.</p><span class="spanel__go">Explore Airport &rarr;</span></span>
-    </a>
-    <a class="spanel" data-svc="school" href="school.html" style="background-image:url('assets/svc-school.jpg')">
-      <span class="spanel__cap"><span class="spanel__k">Our Services</span><h3>School</h3><p>Safe and reliable student transportation service.</p><span class="spanel__go">Explore School &rarr;</span></span>
-    </a>
-  </div>
-  <div class="svcnav">
-    <button type="button" class="svcnav__btn active" data-svc="personal" aria-label="Personal">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
-      <span>Personal</span>
-    </button>
-    <button type="button" class="svcnav__btn" data-svc="corporate" aria-label="Corporate">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7"/><path d="M3 12h18"/></svg>
-      <span>Corporate</span>
-    </button>
-    <button type="button" class="svcnav__btn" data-svc="airport" aria-label="Airport">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15.5 13 11V4.5a1.5 1.5 0 0 0-3 0V11l-8 4.5v2l8-2.3V19l-2.2 1.6v1.4L11 22l3.2 1v-1.4L12 20v-3.8l9 2.3z"/></svg>
-      <span>Airport</span>
-    </button>
-    <button type="button" class="svcnav__btn" data-svc="school" aria-label="School">
-      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2 9l10 5 10-5z"/><path d="M6 11v4.5c0 1.5 2.7 2.8 6 2.8s6-1.3 6-2.8V11"/><path d="M22 9v5"/></svg>
-      <span>School</span>
-    </button>
-  </div>
-</section>
-
 <section class="section fleet" id="fleet">
   <div class="container">
     <div class="section__head">
