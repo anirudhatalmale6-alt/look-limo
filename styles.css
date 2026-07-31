@@ -59,8 +59,8 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
 .header.scrolled{background:#000;box-shadow:0 8px 30px rgba(0,0,0,.7)}
 .header__inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;padding:.85rem 0;position:relative}
 .brand{display:flex;justify-content:center}
-.brand__logo{height:138px;width:auto;border-radius:10px;transition:height .3s}
-.header.scrolled .brand__logo{height:104px}
+.brand__logo{height:180px;width:auto;border-radius:10px;transition:height .3s}
+.header.scrolled .brand__logo{height:132px}
 .nav{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
 .nav__link{font-size:.9rem;letter-spacing:1px;text-transform:uppercase;color:#e9e9ec;position:relative;padding:.3rem 0;transition:color .2s}
 .nav__link::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--gold);transition:width .25s}
@@ -235,8 +235,8 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
   .hero{background-attachment:scroll}
 }
 @media (max-width:760px){
-  .brand__logo{height:96px}
-  .header.scrolled .brand__logo{height:80px}
+  .brand__logo{height:134px}
+  .header.scrolled .brand__logo{height:106px}
   .nav{position:absolute;top:100%;left:0;right:0;background:#0a0a0b;flex-direction:column;gap:0;padding:.6rem 0;border-bottom:1px solid var(--line);
     opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .3s,transform .3s,visibility .3s;box-shadow:0 20px 40px rgba(0,0,0,.6)}
   .nav.open{opacity:1;visibility:visible;transform:translateY(0)}
