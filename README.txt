@@ -16,6 +16,7 @@ Pages (each is a normal .html file you can edit):
   weddings-events.html .. Service page
   nights-out.html ....... Service page
   fleet.html ............ Fleet
+  booking.html .......... Booking page + full reservation form
   faq.html .............. FAQ (expandable)
   contact.html .......... Contact + quote form + map
 
@@ -46,6 +47,13 @@ SWAPPING THE HERO IMAGE
 Replace assets/hero-image.jpg with your own photo (keep the same name). The
 home page shows it behind the "Welcome to Look Limo" heading, fading in from
 black. A wide or square photo with the subject centered works best.
+
+THE HOME PAGE VIDEO
+-------------------
+The video below the hero heading is a YouTube embed. To change it, edit the
+iframe URL in build.py (search for "youtube-nocookie") - swap the video ID in
+both places in the URL (it appears twice: once in the path, once in "playlist="
+which is what makes it loop). Then re-run python3 build.py.
 
 CONTACT DETAILS USED
 --------------------

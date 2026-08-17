@@ -70,6 +70,12 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
 .nav__toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;position:absolute;right:0;top:50%;transform:translateY(-50%)}
 .nav__toggle span{width:26px;height:2px;background:var(--gold);transition:.3s}
 
+/* hero video */
+.herovid{position:relative;z-index:2;background:#000;padding:.4rem 24px 2.6rem;text-align:center}
+.herovid__k{font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold-2);margin:0 0 1.1rem}
+.herovid__frame{position:relative;width:100%;max-width:330px;margin:0 auto;aspect-ratio:9/16;border-radius:20px;overflow:hidden;background:#050505;border:1px solid rgba(212,175,55,.45);box-shadow:0 26px 70px rgba(0,0,0,.85),0 0 46px rgba(212,175,55,.15)}
+.herovid__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+
 /* hero */
 .hero{position:relative;overflow:hidden;background:#000}
 .hero__inner{position:relative;z-index:2;text-align:center;padding:4.4rem 24px 2.2rem;max-width:900px;margin:0 auto;width:100%}
@@ -197,6 +203,18 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
 .quote__form input:focus,.quote__form select:focus,.quote__form textarea:focus{outline:none;border-color:var(--gold)}
 .quote__form select{color:#c7cad0}
 .formnote{margin-top:.6rem;font-size:.9rem;text-align:center;color:var(--gold-2)}
+.fgroup{font-family:'Jost',sans-serif;font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold-2);margin:.2rem 0 1rem;padding-bottom:.55rem;border-bottom:1px solid var(--line)}
+.fgroup + .frow,.fgroup + input{margin-top:0}
+.quote__form .fgroup:not(:first-child){margin-top:1.1rem}
+.fsmall{margin-top:.9rem;font-size:.78rem;line-height:1.5;text-align:center;color:#8b8f98;font-weight:300}
+
+/* booking steps */
+.bsteps{padding-top:3.4rem}
+.bsteps__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.bstep{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:1.7rem 1.5rem;text-align:center}
+.bstep__n{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(212,175,55,.5);color:var(--gold-2);font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:.9rem}
+.bstep h4{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:#fff;margin:0 0 .45rem;font-weight:600}
+.bstep p{color:var(--muted);font-weight:300;font-size:.92rem;margin:0}
 
 /* cta banner */
 .ctabanner{background:linear-gradient(120deg,rgba(201,164,76,.14),rgba(0,0,0,0)),url('assets/about.jpg') center/cover fixed;padding:5rem 0;text-align:center;position:relative}
@@ -252,6 +270,9 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
   .footer__bar-inner{flex-direction:column;text-align:center}
   .hero__inner{padding:2.6rem 24px 1.8rem}
   .frow{grid-template-columns:1fr}
+  .bsteps__grid{grid-template-columns:1fr}
+  .bsteps{padding-top:2.6rem}
+  .herovid__frame{max-width:290px}
   .svcnav__btn{padding:1rem .3rem .85rem;gap:.4rem}
   .svcnav__btn svg{width:24px;height:24px}
   .svcnav__btn span{font-size:.64rem;letter-spacing:1px}

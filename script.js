@@ -119,3 +119,33 @@ function handleQuote(e) {
   f.reset();
   return false;
 }
+
+// booking form (opens email with the full reservation details)
+function handleBooking(e) {
+  e.preventDefault();
+  var f = e.target;
+  var note = document.getElementById('bookNote');
+  function v(n) { return f[n] && f[n].value ? f[n].value : '-'; }
+  var body =
+    'New BOOKING request from the Look Limo website%0D%0A%0D%0A' +
+    '--- Passenger ---%0D%0A' +
+    'Name: ' + v('name') + '%0D%0A' +
+    'Phone: ' + v('phone') + '%0D%0A' +
+    'Email: ' + v('email') + '%0D%0A%0D%0A' +
+    '--- Trip ---%0D%0A' +
+    'Service: ' + v('service') + '%0D%0A' +
+    'Trip type: ' + v('trip') + '%0D%0A' +
+    'Vehicle: ' + v('vehicle') + '%0D%0A' +
+    'Passengers: ' + v('passengers') + '%0D%0A' +
+    'Pickup date/time: ' + v('date') + '%0D%0A' +
+    'Return date/time: ' + v('ret') + '%0D%0A' +
+    'Pickup: ' + v('pickup') + '%0D%0A' +
+    'Drop-off: ' + v('dropoff') + '%0D%0A' +
+    'Flight no: ' + v('flight') + '%0D%0A%0D%0A' +
+    '--- Notes ---%0D%0A' + v('notes');
+  window.location.href = 'mailto:looklimo@gmail.com?subject=' +
+    encodeURIComponent('Booking Request - ' + v('name') + ' - ' + v('date')) + '&body=' + body;
+  if (note) note.textContent = 'Thank you! Your email app is opening with your booking details. Prefer to talk? Call us at 929-213-8083 and we will confirm right away.';
+  f.reset();
+  return false;
+}

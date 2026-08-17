@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact | Look Limo Philadelphia</title>
-<meta name="description" content="Contact Look Limo for luxury limousine and chauffeured car service in Philadelphia. Call 929-213-8083, email looklimo@gmail.com, or request a quote online. Available 24/7." />
+<title>Book a Limo | Look Limo Philadelphia</title>
+<meta name="description" content="Book your Look Limo chauffeur in Philadelphia - airport transfers, corporate travel, personal and student transportation. Cadillac Escalade, Sprinter, minibus and coach. Available 24/7." />
 <link rel="icon" href="assets/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,9 +35,9 @@
       <a href="about.html" class="nav__link">About</a>
       <a href="services.html" class="nav__link">Services</a>
       <a href="fleet.html" class="nav__link">Fleet</a>
-      <a href="booking.html" class="nav__link">Booking</a>
+      <a href="booking.html" class="nav__link active">Booking</a>
       <a href="faq.html" class="nav__link">FAQ</a>
-      <a href="contact.html" class="nav__link active">Contact</a>
+      <a href="contact.html" class="nav__link">Contact</a>
       <a href="contact.html" class="btn btn--gold nav__cta">Get a Quote</a>
     </nav>
     <button class="nav__toggle" id="navToggle" aria-label="Menu">
@@ -46,31 +46,43 @@
   </div>
 </header>
 
-<section class="pagehero" style="background-image:url('assets/fleet-aviator.jpg')">
+<section class="pagehero" style="background-image:url('assets/fleet-escalade.jpg')">
   <div class="container pagehero__inner">
-    <h1>Contact <span>Look Limo</span></h1>
-    <p>Request a quote or book your ride - we reply fast, 24/7.</p>
-    <div class="crumb"><a href="index.html">Home</a> <span>&rsaquo;</span> <span>Contact</span></div>
+    <h1>Book <span>Your Ride</span></h1>
+    <p>Reserve your chauffeur in under a minute - confirmed fast, 24/7.</p>
+    <div class="crumb"><a href="index.html">Home</a> <span>&rsaquo;</span> <span>Booking</span></div>
   </div>
 </section>
 
-<section class="section quote" id="quote">
+<section class="section--tight bsteps">
+  <div class="container bsteps__grid">
+    <div class="bstep"><span class="bstep__n">1</span><h4>Tell Us Your Trip</h4><p>Pick your date, vehicle and pickup details below.</p></div>
+    <div class="bstep"><span class="bstep__n">2</span><h4>We Confirm</h4><p>We reply fast with availability and your all-in price.</p></div>
+    <div class="bstep"><span class="bstep__n">3</span><h4>Ride in Luxury</h4><p>Your chauffeur arrives early, every time.</p></div>
+  </div>
+</section>
+
+<section class="section quote" id="book">
   <div class="container contactgrid">
     <div class="quote__info">
-      <p class="eyebrow">Get In Touch</p>
-      <h2 class="section__title section__title--left">Request a Quote</h2>
-      <p style="color:var(--muted);font-weight:300;margin-bottom:2rem">Tell us where you are going and we will get right back to you with availability and a price. Prefer to talk? Call or email us anytime - we are available around the clock.</p>
-      <div class="infoblock"><span class="ic">&#9742;</span><div><h4>Call Us</h4><a href="tel:+19292138083">929-213-8083</a></div></div>
-      <div class="infoblock"><span class="ic">&#9993;</span><div><h4>Email Us</h4><a href="mailto:looklimo@gmail.com">looklimo@gmail.com</a></div></div>
+      <p class="eyebrow">Reservations</p>
+      <h2 class="section__title section__title--left">Booking Request</h2>
+      <p style="color:var(--muted);font-weight:300;margin-bottom:2rem">Fill in the details and we will confirm your reservation right away. Booking last minute or need something custom? Call us - we answer around the clock.</p>
+      <div class="infoblock"><span class="ic">&#9742;</span><div><h4>Book by Phone</h4><a href="tel:+19292138083">929-213-8083</a></div></div>
+      <div class="infoblock"><span class="ic">&#9993;</span><div><h4>Book by Email</h4><a href="mailto:looklimo@gmail.com">looklimo@gmail.com</a></div></div>
+      <div class="infoblock"><span class="ic">&#9200;</span><div><h4>Availability</h4><p>24 hours a day, 7 days a week</p></div></div>
       <div class="infoblock"><span class="ic">&#128205;</span><div><h4>Service Area</h4><p>Philadelphia, PA &amp; surrounding region</p></div></div>
-      <div class="infoblock"><span class="ic">&#9200;</span><div><h4>Hours</h4><p>24 hours a day, 7 days a week</p></div></div>
     </div>
-    <form class="quote__form" id="quoteForm" onsubmit="return handleQuote(event)">
+
+    <form class="quote__form" id="bookingForm" onsubmit="return handleBooking(event)">
+      <p class="fgroup">Your Details</p>
       <div class="frow">
         <input type="text" name="name" placeholder="Full Name" required />
         <input type="tel" name="phone" placeholder="Phone Number" required />
       </div>
       <input type="email" name="email" placeholder="Email Address" required />
+
+      <p class="fgroup">Your Trip</p>
       <div class="frow">
         <select name="service" required>
           <option value="" disabled selected>Service Type</option>
@@ -78,26 +90,42 @@
           <option>Airport</option>
           <option>Corporate / Business</option>
           <option>School / Student</option>
+          <option>Hourly / As-Directed</option>
           <option>Other</option>
         </select>
-        <input type="text" name="date" placeholder="Date &amp; Time" onfocus="(this.type='datetime-local')" onblur="if(!this.value)this.type='text'" required />
+        <select name="trip" required>
+          <option value="" disabled selected>Trip Type</option>
+          <option>One Way</option>
+          <option>Round Trip</option>
+          <option>Hourly</option>
+        </select>
       </div>
       <div class="frow">
-        <input type="text" name="pickup" placeholder="Pickup Location" required />
-        <input type="text" name="dropoff" placeholder="Drop-off Location" required />
+        <select name="vehicle" required>
+          <option value="" disabled selected>Preferred Vehicle</option>
+          <option>Cadillac Escalade &middot; up to 6 passengers</option>
+          <option>Lincoln Aviator &middot; up to 3 passengers</option>
+          <option>Chevy Suburban &middot; up to 6 passengers</option>
+          <option>Mercedes Executive Sprinter &middot; up to 14 passengers</option>
+          <option>Minibus &middot; up to 24 passengers</option>
+          <option>Luxury Limo Minibus &middot; up to 30 passengers</option>
+          <option>Bus &middot; up to 35 passengers</option>
+          <option>Not sure - recommend one for me</option>
+        </select>
+        <input type="number" name="passengers" min="1" max="60" placeholder="Number of Passengers" required />
       </div>
-      <textarea name="notes" placeholder="Passengers, special requests, etc." rows="3"></textarea>
-      <button type="submit" class="btn btn--gold btn--block btn--lg">Request My Quote</button>
-      <p class="formnote" id="formNote"></p>
+      <div class="frow">
+        <input type="text" name="date" placeholder="Pickup Date &amp; Time" onfocus="(this.type='datetime-local')" onblur="if(!this.value)this.type='text'" required />
+        <input type="text" name="ret" placeholder="Return Date &amp; Time (optional)" onfocus="(this.type='datetime-local')" onblur="if(!this.value)this.type='text'" />
+      </div>
+      <input type="text" name="pickup" placeholder="Pickup Address" required />
+      <input type="text" name="dropoff" placeholder="Drop-off Address" required />
+      <input type="text" name="flight" placeholder="Flight Number (airport pickups only)" />
+      <textarea name="notes" placeholder="Child seats, extra luggage, multiple stops, special requests..." rows="3"></textarea>
+      <button type="submit" class="btn btn--gold btn--block btn--lg">Request My Booking</button>
+      <p class="formnote" id="bookNote"></p>
+      <p class="fsmall">Submitting sends us your request - it is not charged and nothing is final until we confirm back with you.</p>
     </form>
-  </div>
-</section>
-
-<section class="section--tight" style="padding-bottom:5rem">
-  <div class="container">
-    <div class="mapwrap">
-      <iframe title="Philadelphia service area" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-75.28%2C39.87%2C-74.96%2C40.14&amp;layer=mapnik&amp;marker=39.9526%2C-75.1652"></iframe>
-    </div>
   </div>
 </section>
 

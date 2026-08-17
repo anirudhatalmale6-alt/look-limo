@@ -14,6 +14,7 @@ NAV = [
     ("About", "about.html"),
     ("Services", "services.html"),
     ("Fleet", "fleet.html"),
+    ("Booking", "booking.html"),
     ("FAQ", "faq.html"),
     ("Contact", "contact.html"),
 ]
@@ -96,6 +97,7 @@ FOOTER = f"""
       <h4>Company</h4>
       <a href="about.html">About Us</a>
       <a href="fleet.html">Our Fleet</a>
+      <a href="booking.html">Book a Ride</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Get a Quote</a>
     </div>
@@ -151,6 +153,15 @@ home_body = f"""
     <div class="hero__cta">
       <a href="fleet.html" class="btn btn--gold btn--lg">View Fleet</a>
       <a href="contact.html" class="btn btn--ghost btn--lg">Get a Quote</a>
+    </div>
+  </div>
+  <div class="herovid">
+    <p class="herovid__k">The Escalade Experience</p>
+    <div class="herovid__frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/8vLZsTLgPZY?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=8vLZsTLgPZY&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;playsinline=1"
+              title="Look Limo - the Cadillac Escalade"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowfullscreen></iframe>
     </div>
   </div>
   <div class="hero__media">
@@ -554,5 +565,90 @@ write("contact.html",
       head("Contact | Look Limo Philadelphia",
            "Contact Look Limo for luxury limousine and chauffeured car service in Philadelphia. Call " + PHONE + ", email " + EMAIL + ", or request a quote online. Available 24/7.")
       + header("contact.html") + contact_body + FOOTER)
+
+# =====================================================================
+# BOOKING
+# =====================================================================
+_veh_opts = "\n".join(
+    f"          <option>{name} &middot; up to {pax} passengers</option>"
+    for name, pax, _f, _img, _sim in VEHICLES)
+
+booking_body = pagehero("Book <span>Your Ride</span>",
+    "Reserve your chauffeur in under a minute - confirmed fast, 24/7.",
+    {"name": "Booking", "bg": "fleet-escalade.jpg"}) + f"""
+<section class="section--tight bsteps">
+  <div class="container bsteps__grid">
+    <div class="bstep"><span class="bstep__n">1</span><h4>Tell Us Your Trip</h4><p>Pick your date, vehicle and pickup details below.</p></div>
+    <div class="bstep"><span class="bstep__n">2</span><h4>We Confirm</h4><p>We reply fast with availability and your all-in price.</p></div>
+    <div class="bstep"><span class="bstep__n">3</span><h4>Ride in Luxury</h4><p>Your chauffeur arrives early, every time.</p></div>
+  </div>
+</section>
+
+<section class="section quote" id="book">
+  <div class="container contactgrid">
+    <div class="quote__info">
+      <p class="eyebrow">Reservations</p>
+      <h2 class="section__title section__title--left">Booking Request</h2>
+      <p style="color:var(--muted);font-weight:300;margin-bottom:2rem">Fill in the details and we will confirm your reservation right away. Booking last minute or need something custom? Call us - we answer around the clock.</p>
+      <div class="infoblock"><span class="ic">&#9742;</span><div><h4>Book by Phone</h4><a href="tel:{PHONE_TEL}">{PHONE}</a></div></div>
+      <div class="infoblock"><span class="ic">&#9993;</span><div><h4>Book by Email</h4><a href="mailto:{EMAIL}">{EMAIL}</a></div></div>
+      <div class="infoblock"><span class="ic">&#9200;</span><div><h4>Availability</h4><p>24 hours a day, 7 days a week</p></div></div>
+      <div class="infoblock"><span class="ic">&#128205;</span><div><h4>Service Area</h4><p>Philadelphia, PA &amp; surrounding region</p></div></div>
+    </div>
+
+    <form class="quote__form" id="bookingForm" onsubmit="return handleBooking(event)">
+      <p class="fgroup">Your Details</p>
+      <div class="frow">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+      </div>
+      <input type="email" name="email" placeholder="Email Address" required />
+
+      <p class="fgroup">Your Trip</p>
+      <div class="frow">
+        <select name="service" required>
+          <option value="" disabled selected>Service Type</option>
+          <option>Personal</option>
+          <option>Airport</option>
+          <option>Corporate / Business</option>
+          <option>School / Student</option>
+          <option>Hourly / As-Directed</option>
+          <option>Other</option>
+        </select>
+        <select name="trip" required>
+          <option value="" disabled selected>Trip Type</option>
+          <option>One Way</option>
+          <option>Round Trip</option>
+          <option>Hourly</option>
+        </select>
+      </div>
+      <div class="frow">
+        <select name="vehicle" required>
+          <option value="" disabled selected>Preferred Vehicle</option>
+{_veh_opts}
+          <option>Not sure - recommend one for me</option>
+        </select>
+        <input type="number" name="passengers" min="1" max="60" placeholder="Number of Passengers" required />
+      </div>
+      <div class="frow">
+        <input type="text" name="date" placeholder="Pickup Date &amp; Time" onfocus="(this.type='datetime-local')" onblur="if(!this.value)this.type='text'" required />
+        <input type="text" name="ret" placeholder="Return Date &amp; Time (optional)" onfocus="(this.type='datetime-local')" onblur="if(!this.value)this.type='text'" />
+      </div>
+      <input type="text" name="pickup" placeholder="Pickup Address" required />
+      <input type="text" name="dropoff" placeholder="Drop-off Address" required />
+      <input type="text" name="flight" placeholder="Flight Number (airport pickups only)" />
+      <textarea name="notes" placeholder="Child seats, extra luggage, multiple stops, special requests..." rows="3"></textarea>
+      <button type="submit" class="btn btn--gold btn--block btn--lg">Request My Booking</button>
+      <p class="formnote" id="bookNote"></p>
+      <p class="fsmall">Submitting sends us your request - it is not charged and nothing is final until we confirm back with you.</p>
+    </form>
+  </div>
+</section>
+{CTA}
+""".replace("{CTA}", CTA)
+write("booking.html",
+      head("Book a Limo | Look Limo Philadelphia",
+           "Book your Look Limo chauffeur in Philadelphia - airport transfers, corporate travel, personal and student transportation. Cadillac Escalade, Sprinter, minibus and coach. Available 24/7.")
+      + header("booking.html") + booking_body + FOOTER)
 
 print("\nAll pages generated.")
