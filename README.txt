@@ -55,6 +55,15 @@ iframe URL in build.py (search for "youtube-nocookie") - swap the video ID in
 both places in the URL (it appears twice: once in the path, once in "playlist="
 which is what makes it loop). Then re-run python3 build.py.
 
+It is set up to look like part of the site rather than a YouTube player:
+controls, keyboard, fullscreen button and related-video links are all switched
+off in the URL, and an invisible layer ("herovid__shield" in styles.css) sits on
+top so a click can never open YouTube.
+
+BEST OPTION: send the video file itself (an .mp4) instead. Drop it in assets/
+and it can be played by the browser directly - then there is no YouTube
+involvement at all, and no logo of any kind.
+
 CONTACT DETAILS USED
 --------------------
 Phone: 929-213-8083   Email: looklimo@gmail.com   Area: Philadelphia, PA

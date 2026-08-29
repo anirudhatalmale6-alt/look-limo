@@ -156,12 +156,15 @@ home_body = f"""
     </div>
   </div>
   <div class="herovid">
-    <p class="herovid__k">The Escalade Experience</p>
-    <div class="herovid__frame">
-      <iframe src="https://www.youtube-nocookie.com/embed/8vLZsTLgPZY?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=8vLZsTLgPZY&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;playsinline=1"
-              title="Look Limo - the Cadillac Escalade"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowfullscreen></iframe>
+    <div class="herovid__bg" aria-hidden="true"></div>
+    <div class="herovid__inner">
+      <p class="herovid__k">The Escalade Experience</p>
+      <div class="herovid__frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/8vLZsTLgPZY?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=8vLZsTLgPZY&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;iv_load_policy=3&amp;disablekb=1&amp;fs=0&amp;playsinline=1"
+                title="Look Limo - the Cadillac Escalade"
+                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+        <div class="herovid__shield" aria-hidden="true"></div>
+      </div>
     </div>
   </div>
   <div class="hero__media">
