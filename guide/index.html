@@ -8,30 +8,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#0a0a0c;color:#f2f2f2;font-family:'Jost',system-ui,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:32px 18px 60px}
-  .wrap{width:100%;max-width:900px}
-  .top{text-align:center;margin-bottom:26px}
+  body{background:#0a0a0c;color:#f2f2f2;font-family:'Jost',system-ui,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:28px 14px 60px}
+  .wrap{width:100%;max-width:1280px}
+  .top{text-align:center;margin-bottom:26px;max-width:900px;margin-left:auto;margin-right:auto}
   .kicker{color:#c9a44c;letter-spacing:3px;text-transform:uppercase;font-size:.8rem;font-weight:600}
   h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:2.3rem;margin:.35rem 0 .2rem;color:#fff}
   h1 span{color:#e8c877}
   .sub{color:#b9b9bd;font-size:1.02rem;font-weight:300}
-  .player{position:relative;border:2px solid #c9a44c;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#000}
+  /* video shown at its full native 1280x720 where the screen allows */
+  .player{position:relative;width:100%;max-width:1280px;margin:0 auto;border:2px solid #c9a44c;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#000}
   video{display:block;width:100%;height:auto;background:#000}
-  .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
-  .btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:600;text-decoration:none;font-size:.98rem;transition:transform .15s,box-shadow .15s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn--gold{background:linear-gradient(135deg,#e8c877,#c9a44c);color:#141007;box-shadow:0 8px 22px rgba(201,164,76,.35)}
-  .btn--ghost{border:1px solid #55555c;color:#eee}
-  .steps{margin-top:38px;background:#111114;border:1px solid #24242a;border-radius:14px;padding:26px 28px}
+  .steps{margin:38px auto 0;max-width:900px;background:#111114;border:1px solid #24242a;border-radius:14px;padding:26px 28px}
   .steps h2{font-family:'Cormorant Garamond',serif;color:#e8c877;font-size:1.5rem;margin-bottom:14px;font-weight:600}
   .steps ol{list-style:none;counter-reset:s}
   .steps li{counter-increment:s;position:relative;padding:10px 0 10px 46px;border-bottom:1px solid #1e1e24}
   .steps li:last-child{border-bottom:0}
   .steps li::before{content:counter(s);position:absolute;left:0;top:9px;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#e8c877,#c9a44c);color:#141007;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.95rem}
   .steps b{color:#fff}
-  .foot{text-align:center;color:#8a8a90;font-size:.9rem;margin-top:30px}
+  .foot{text-align:center;color:#8a8a90;font-size:.9rem;margin:30px auto 0;max-width:900px}
   .foot a{color:#e8c877;text-decoration:none}
-  @media(max-width:560px){h1{font-size:1.8rem}.steps{padding:20px}}
+  .hint{text-align:center;color:#c9a44c;font-size:.9rem;margin-top:14px;font-weight:400}
+  @media(max-width:560px){
+    h1{font-size:1.8rem}.steps{padding:20px}
+    /* edge to edge on a phone - it can't get any wider than the screen */
+    .player{margin-left:-14px;margin-right:-14px;width:calc(100% + 28px);border-radius:0;border-left:0;border-right:0}
+  }
 </style>
 </head>
 <body>
@@ -49,10 +50,7 @@
       </video>
     </div>
 
-    <div class="actions">
-      <a class="btn btn--gold" href="edit-guide.mp4" download>Download the video</a>
-      <a class="btn btn--ghost" href="../">Open the live website</a>
-    </div>
+    <p class="hint">On a phone: turn it sideways, or tap the fullscreen icon on the video, to watch it full size.</p>
 
     <div class="steps">
       <h2>The same steps, in writing</h2>
