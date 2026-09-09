@@ -654,4 +654,11 @@ write("booking.html",
            "Book your Look Limo chauffeur in Philadelphia - airport transfers, corporate travel, personal and student transportation. Cadillac Escalade, Sprinter, minibus and coach. Available 24/7.")
       + header("booking.html") + booking_body + FOOTER)
 
+# City landing pages live in cities.py and are imported LAST, because that
+# module imports this one back for the shared head/footer/fleet. Importing it
+# at the top would be a circular import into a half-built module.
+import sys  # noqa: E402
+import cities  # noqa: E402
+cities.build_city_pages(sys.modules[__name__])
+
 print("\nAll pages generated.")
