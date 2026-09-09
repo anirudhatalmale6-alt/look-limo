@@ -113,6 +113,11 @@ CITIES = [
         "sub": "Chauffeured luxury transportation across Philadelphia, the Main Line "
                "and the surrounding counties - 24 hours a day.",
         "bg": "hero-image.jpg",
+        # The client asked for THIS photograph to move off the home page and
+        # onto Philadelphia - it is a Philadelphia picture: his own LOOK LIMO
+        # Pennsylvania plate, the PHL airport sign, the city skyline behind.
+        "hero_img": "hero-image.jpg",
+        "hero_alt": "Look Limo Cadillac Escalade at Philadelphia International Airport with the Philadelphia skyline",
         "split_img": "fleet-escalade.jpg",
         "meta": "Look Limo provides chauffeured limousine and car service across "
                 "Philadelphia and the surrounding region - PHL airport transfers, "
@@ -168,6 +173,9 @@ CITIES = [
         "sub": "Chauffeured transportation across North, Central and South Jersey - "
                "airports, corporate travel, weddings and the Shore.",
         "bg": "fleet-sprinter.jpg",
+        # No New Jersey photograph exists yet - flagged to the client.
+        "hero_img": "fleet-sprinter.jpg",
+        "hero_alt": "Look Limo Mercedes Executive Sprinter",
         "split_img": "fleet-suburban.jpg",
         "meta": "Look Limo provides chauffeured limousine and car service throughout "
                 "New Jersey - Newark Liberty (EWR), Teterboro, Atlantic City and "
@@ -224,6 +232,9 @@ CITIES = [
         "sub": "Chauffeured transportation in Manhattan, the boroughs, Long Island, "
                "Westchester and the Hudson Valley.",
         "bg": "fleet-aviator.jpg",
+        # No New York photograph exists yet - flagged to the client.
+        "hero_img": "fleet-escalade.jpg",
+        "hero_alt": "Look Limo Cadillac Escalade on a city street at night",
         "split_img": "fleet-limobus.jpg",
         "meta": "Look Limo provides chauffeured limousine and car service across New "
                 "York - JFK, LaGuardia, Newark, Westchester and Long Island "
@@ -449,13 +460,22 @@ def city_page(city, base="../", out_dir="preview"):
     areas = "".join(f"        <li>{a}</li>\n" for a in city["areas"])
     intro = "".join(f"      <p>{p}</p>\n" for p in city["intro_p"])
 
+    # The home page hero is three stacked lines - a script "Welcome to", the
+    # name in big gold, then a tagline - over black, with the video band and a
+    # full-width photograph beneath. These pages now use exactly that, with the
+    # CITY as the big gold line so the H1 is still the thing the page is about.
     body = f"""
-<section class="pagehero" style="background-image:url('{base}assets/{city['bg']}')">
-  <div class="container pagehero__inner">
-    <h1>{city['title']}</h1>
-    <p>{city['sub']}</p>
-{_btn_row(base)}
-    <div class="crumb"><a href="{base}index.html">Home</a> <span>&rsaquo;</span> <span>{esc_name}</span></div>
+<section class="hero" id="home">
+  <div class="container hero__inner">
+    <p class="hero__welcome">Look Limo in</p>
+    <h1 class="hero__brand hero__brand--city" style="--chars:{len(esc_name)}">{esc_name}</h1>
+    <p class="hero__tag">{city['sub']}</p>
+{_btn_row(base, big=True)}
+    <div class="crumb crumb--hero"><a href="{base}index.html">Home</a> <span>&rsaquo;</span> <span>{esc_name}</span></div>
+  </div>
+{build.HEROVID_LOCAL.replace('src="assets/', f'src="{base}assets/').replace('poster="assets/', f'poster="{base}assets/')}
+  <div class="hero__media">
+    <img src="{base}assets/{city['hero_img']}" alt="{city['hero_alt']}" />
   </div>
 </section>
 
@@ -507,6 +527,16 @@ def city_page(city, base="../", out_dir="preview"):
       <p class="section__lead">From three passengers to thirty-five, all chauffeur-driven and spotless.</p>
     </div>
     {{FLEET}}
+    <div class="center mt2"><a href="{base}fleet.html" class="btn btn--gold">View the Full Fleet</a></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container grid grid--4 stats__grid">
+    <div class="stat"><strong data-count="200">0</strong><span>Vehicles in Our Fleet</span></div>
+    <div class="stat"><strong data-count="15">0</strong><span>Years of Experience</span></div>
+    <div class="stat"><strong data-count="50000">0</strong><span>Rides Completed</span></div>
+    <div class="stat"><strong data-count="24">0</strong><span>Hours a Day, 7 Days</span></div>
   </div>
 </section>
 
@@ -550,7 +580,7 @@ def city_page(city, base="../", out_dir="preview"):
 {_btn_row(base, big=True)}
   </div>
 </section>
-""".replace("{FLEET}", build.FLEET_GRID.replace('src="assets/', f'src="{base}assets/')
+""".replace("{FLEET}", build.FLEET_HOME.replace('src="assets/', f'src="{base}assets/')
                                        .replace("url('assets/", f"url('{base}assets/"))
 
     # Inlined rather than added to styles.css ON PURPOSE. These pages go up

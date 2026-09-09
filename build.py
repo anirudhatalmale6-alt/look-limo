@@ -156,9 +156,6 @@ home_body = f"""
     </div>
   </div>
 __HEROVID__
-  <div class="hero__media">
-    <img src="assets/hero-image.jpg" alt="Look Limo Cadillac Escalade at Philadelphia International Airport with the Philadelphia skyline" />
-  </div>
 </section>
 
 <section class="section fleet" id="fleet">

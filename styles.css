@@ -95,6 +95,17 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
    frame is lost. 15% is measured off the client's own screenshot, where the
    title bar occupied 9% and the wordmark 5% of the frame height. */
 .herovid__frame iframe{position:absolute;left:0;top:-15%;width:100%;height:130%;border:0;display:block;pointer-events:none}
+/* City names are longer than the brand name. .hero__brand's 13vw is tuned for
+   "LOOK LIMO" - nine characters - and "PHILADELPHIA" is twelve, so on a phone
+   it ran off the edge and rendered as "PHILADELPHI".
+   It did not widen the page, because .hero is overflow:hidden, so the usual
+   horizontal-scroll check passed while the word was being cut in half. */
+
+/* breadcrumb when it sits in the home-style hero rather than a pagehero */
+.crumb--hero{margin-top:1.4rem;justify-content:center;display:flex;gap:.5rem;
+  font-size:.78rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.crumb--hero a{color:var(--gold-2)}
+
 /* --- self-hosted hero video (the alternative to the YouTube embed) ---------
    Landscape and full-bleed, which the 9:16 embed could never be: covering a
    1280px-wide band with a vertical clip would have cropped it to about a
@@ -127,6 +138,14 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
 }
 .hero__welcome{font-family:'Great Vibes',cursive;font-weight:400;color:#fff;font-size:clamp(2.2rem,6vw,3.8rem);line-height:1;margin-bottom:.1rem}
 .hero__brand{font-size:clamp(3.6rem,13vw,8.4rem);color:var(--gold-2);text-transform:uppercase;letter-spacing:.02em;line-height:.92;margin:0 0 1rem;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+/* Sized by CHARACTER COUNT, not a fixed vw. One vw value cannot fit both
+   "NEW YORK" and "PHILADELPHIA": tuning it for the long one leaves the short
+   one small, and tuning it for the short one clips the long one. --chars is
+   set inline per city and the width divides by it. 1.06 is the average glyph
+   width of this typeface in uppercase, measured against the rendered result
+   rather than guessed. */
+.hero__brand--city{font-size:clamp(1.6rem,calc(86vw / var(--chars,10) / 1.06),6.4rem);
+  word-break:normal;hyphens:none;white-space:nowrap}
 .hero__tag{color:#fff;font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:clamp(.82rem,2.2vw,1.05rem);margin-bottom:2.4rem}
 .hero__cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
 
