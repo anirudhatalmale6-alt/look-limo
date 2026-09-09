@@ -155,18 +155,7 @@ home_body = f"""
       <a href="contact.html" class="btn btn--ghost btn--lg">Get a Quote</a>
     </div>
   </div>
-  <div class="herovid">
-    <div class="herovid__bg" aria-hidden="true"></div>
-    <div class="herovid__inner">
-      <p class="herovid__k">The Escalade Experience</p>
-      <div class="herovid__frame">
-        <iframe src="https://www.youtube-nocookie.com/embed/8vLZsTLgPZY?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=8vLZsTLgPZY&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;iv_load_policy=3&amp;disablekb=1&amp;fs=0&amp;playsinline=1"
-                title="Look Limo - the Cadillac Escalade"
-                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
-        <div class="herovid__shield" aria-hidden="true"></div>
-      </div>
-    </div>
-  </div>
+__HEROVID__
   <div class="hero__media">
     <img src="assets/hero-image.jpg" alt="Look Limo Cadillac Escalade at Philadelphia International Airport with the Philadelphia skyline" />
   </div>
@@ -271,12 +260,100 @@ FLEET_HOME = ('<div class="fleetcarousel">\n'
               '      <button type="button" class="fleetarrow fleetarrow--next" id="fleetNext" aria-label="Next vehicle">&#8250;</button>\n'
               '    </div>')
 
+# ---------------------------------------------------------------------------
+# The hero video, in two versions.
+#
+# YOUTUBE is what is live. Its title bar and wordmark are cropped away by the
+# oversized-iframe trick in styles.css, but the play / pause / next controls sit
+# dead centre over the car and CANNOT be removed: there is no parameter that
+# hides them (mobile Safari ignores controls=0) and cropping the middle of the
+# frame would crop the vehicle out with them.
+#
+# LOCAL is the answer to that. A plain <video> element with no controls
+# attribute draws no interface at all - not because a setting hides it, but
+# because there is nothing there to draw. Built from the client's own seven
+# branded fleet photographs, so it is also his footage rather than a Cadillac
+# dealership's, and it is landscape so it finally fills the band edge to edge.
+#
+# Which one renders is one variable. index.html keeps YouTube until he picks.
+# ---------------------------------------------------------------------------
+HEROVID_YOUTUBE = """  <div class="herovid">
+    <div class="herovid__bg" aria-hidden="true"></div>
+    <div class="herovid__inner">
+      <p class="herovid__k">The Escalade Experience</p>
+      <div class="herovid__frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/8vLZsTLgPZY?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=8vLZsTLgPZY&amp;controls=0&amp;modestbranding=1&amp;rel=0&amp;iv_load_policy=3&amp;disablekb=1&amp;fs=0&amp;playsinline=1"
+                title="Look Limo - the Cadillac Escalade"
+                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+        <div class="herovid__shield" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+"""
+
+# muted + playsinline are BOTH required or iOS refuses to autoplay and falls
+# back to showing a play button - which is the exact thing this replaces.
+# No `controls` attribute, so there is no interface. disablepictureinpicture
+# and the empty controlsList stop the long-press menu offering one.
+HEROVID_LOCAL = """  <div class="herovid herovid--wide">
+    <div class="herovid__inner herovid__inner--wide">
+      <p class="herovid__k">The Look Limo Fleet</p>
+      <div class="herovid__wide">
+        <video class="herovid__vid" autoplay muted loop playsinline preload="metadata"
+               disablepictureinpicture controlsList="nodownload noplaybackrate"
+               poster="assets/hero-fleet-poster.jpg"
+               aria-label="The Look Limo fleet">
+          <source src="assets/hero-fleet.mp4" type="video/mp4" />
+        </video>
+        <div class="herovid__shield" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+"""
+
 home_body = home_body.replace("__FLEETGRID__", FLEET_HOME)
+
+home_yt = home_body.replace("__HEROVID__", HEROVID_YOUTUBE)
+home_local = home_body.replace("__HEROVID__", HEROVID_LOCAL)
+
+# A preview of the same home page with the self-hosted video, so he can look at
+# the alternative rather than take my word that it has no icons. Written to
+# preview/ and noindex, exactly like the city pages - his live home page keeps
+# YouTube until he chooses. Asset paths need ../ from a subfolder.
+import os as _os
+_os.makedirs(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "preview"),
+             exist_ok=True)
+
+
+def _rebase(html):
+    return (html.replace('src="assets/', 'src="../assets/')
+                .replace('href="assets/', 'href="../assets/')
+                .replace("url('assets/", "url('../assets/")
+                .replace('href="styles.css"', 'href="../styles.css"')
+                .replace('src="script.js"', 'src="../script.js"')
+                .replace('href="index.html"', 'href="../index.html"')
+                .replace('href="about.html"', 'href="../about.html"')
+                .replace('href="services.html"', 'href="../services.html"')
+                .replace('href="fleet.html"', 'href="../fleet.html"')
+                .replace('href="booking.html"', 'href="../booking.html"')
+                .replace('href="faq.html"', 'href="../faq.html"')
+                .replace('href="contact.html"', 'href="../contact.html"')
+                .replace('href="personal.html"', 'href="../personal.html"')
+                .replace('href="airport-transfers.html"', 'href="../airport-transfers.html"')
+                .replace('href="corporate-travel.html"', 'href="../corporate-travel.html"')
+                .replace('href="school.html"', 'href="../school.html"'))
+
+
+write("preview/home-video.html",
+      _rebase(head("Look Limo | Home page with the self-hosted fleet video",
+                   "Preview - the Look Limo home page with the self-hosted fleet video.")
+              .replace("</head>", '<meta name="robots" content="noindex,nofollow" />\n</head>')
+              + header("index.html") + home_local + FOOTER))
 
 write("index.html",
       head("Look Limo | Luxury Limousine &amp; Chauffeur Service in Philadelphia",
            "Look Limo - premium limousine and chauffeured car service in Philadelphia, PA. Airport transfers, corporate travel, weddings and events. Elegance. Comfort. Excellence.")
-      + header("index.html") + home_body + FOOTER)
+      + header("index.html") + home_yt + FOOTER)
 
 # =====================================================================
 # ABOUT

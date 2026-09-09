@@ -95,6 +95,23 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
    frame is lost. 15% is measured off the client's own screenshot, where the
    title bar occupied 9% and the wordmark 5% of the frame height. */
 .herovid__frame iframe{position:absolute;left:0;top:-15%;width:100%;height:130%;border:0;display:block;pointer-events:none}
+/* --- self-hosted hero video (the alternative to the YouTube embed) ---------
+   Landscape and full-bleed, which the 9:16 embed could never be: covering a
+   1280px-wide band with a vertical clip would have cropped it to about a
+   quarter of its height and sliced the vehicle in half.
+   A <video> with no `controls` attribute draws NO interface - not hidden by a
+   setting, simply not rendered - which is the whole point of the switch. */
+.herovid--wide{border-top:1px solid rgba(212,175,55,.22);border-bottom:1px solid rgba(212,175,55,.22)}
+.herovid__inner--wide{padding:1.6rem 0 0}
+.herovid__wide{position:relative;width:100%;line-height:0;overflow:hidden;background:#000}
+.herovid__vid{display:block;width:100%;height:auto}
+@media(min-width:900px){
+  .herovid__wide{height:62vh}
+  .herovid__vid{height:100%;object-fit:cover;object-position:center 46%}
+}
+/* the band's ambient blur is not needed when the video fills the width */
+.herovid--wide .herovid__bg{display:none}
+
 /* transparent shield - stops any click reaching YouTube */
 .herovid__shield{position:absolute;inset:0;z-index:2;background:transparent;cursor:default}
 
