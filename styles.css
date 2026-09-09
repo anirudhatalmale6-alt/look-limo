@@ -82,7 +82,19 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
 .herovid__inner{position:relative;z-index:1;padding:1.6rem 16px 1.9rem}
 .herovid__k{font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold-2);margin:0 0 1rem;text-shadow:0 2px 12px rgba(0,0,0,.9)}
 .herovid__frame{position:relative;width:min(100%,calc(min(86vh,900px) * 0.5625));margin:0 auto;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:#050505;border:1px solid rgba(212,175,55,.45);box-shadow:0 30px 80px rgba(0,0,0,.85),0 0 56px rgba(212,175,55,.18)}
-.herovid__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;pointer-events:none}
+/* The iframe is deliberately TALLER than the frame that shows it.
+   YouTube's title bar, channel name, share link and the YouTube wordmark are
+   anchored to the edges of the PLAYER, and they cannot be turned off:
+   modestbranding is deprecated and mobile Safari ignores controls=0, which is
+   why the client kept seeing "Tom Peacock Cadillac" and a YouTube logo over
+   his own hero.
+   The player never crops a video, it letterboxes it. So making the player 130%
+   tall at the same width leaves a 15% black bar above and below the 9:16 clip,
+   the chrome lands on those bars, and .herovid__frame's overflow:hidden cuts
+   them off. The visible picture is the full clip - nothing is zoomed and no
+   frame is lost. 15% is measured off the client's own screenshot, where the
+   title bar occupied 9% and the wordmark 5% of the frame height. */
+.herovid__frame iframe{position:absolute;left:0;top:-15%;width:100%;height:130%;border:0;display:block;pointer-events:none}
 /* transparent shield - stops any click reaching YouTube */
 .herovid__shield{position:absolute;inset:0;z-index:2;background:transparent;cursor:default}
 
