@@ -461,9 +461,14 @@ def city_page(city, base="../", out_dir="preview"):
     intro = "".join(f"      <p>{p}</p>\n" for p in city["intro_p"])
 
     # The home page hero is three stacked lines - a script "Welcome to", the
-    # name in big gold, then a tagline - over black, with the video band and a
-    # full-width photograph beneath. These pages now use exactly that, with the
-    # CITY as the big gold line so the H1 is still the thing the page is about.
+    # name in big gold, then a tagline - over black, with a full-width
+    # photograph beneath. These pages use exactly that, with the CITY as the
+    # big gold line so the H1 is still the thing the page is about.
+    #
+    # NO VIDEO BAND. It used to carry the fleet montage built from the client's
+    # own photographs; he circled it on 11 Sep and called it an image
+    # slideshow, which is fair - it is stills with a slow pan, not footage.
+    # assets/hero-fleet.mp4 is still in the repo if he ever wants it back.
     body = f"""
 <section class="hero" id="home">
   <div class="container hero__inner">
@@ -473,7 +478,6 @@ def city_page(city, base="../", out_dir="preview"):
 {_btn_row(base, big=True)}
     <div class="crumb crumb--hero"><a href="{base}index.html">Home</a> <span>&rsaquo;</span> <span>{esc_name}</span></div>
   </div>
-{build.HEROVID_LOCAL.replace('src="assets/', f'src="{base}assets/').replace('poster="assets/', f'poster="{base}assets/')}
   <div class="hero__media">
     <img src="{base}assets/{city['hero_img']}" alt="{city['hero_alt']}" />
   </div>

@@ -341,12 +341,13 @@ def _rebase(html):
                 .replace('href="school.html"', 'href="../school.html"'))
 
 
-write("preview/home-video.html",
-      _rebase(head("Look Limo | Home page with the self-hosted fleet video",
-                   "Preview - the Look Limo home page with the self-hosted fleet video.")
-              .replace("</head>", '<meta name="robots" content="noindex,nofollow" />\n</head>')
-              + header("index.html") + home_local + FOOTER))
-
+# preview/home-video.html is gone. It existed only to show the self-hosted
+# fleet montage as an alternative to the YouTube embed, and on 11 Sep the
+# client circled that montage and asked for it to be removed - so a preview
+# whose entire content is the rejected thing has nothing left to preview.
+# HEROVID_LOCAL and assets/hero-fleet.mp4 stay, so it is one line to bring
+# back, and it is also where his own Escalade clip will be dropped in once he
+# gets the file to me.
 write("index.html",
       head("Look Limo | Luxury Limousine &amp; Chauffeur Service in Philadelphia",
            "Look Limo - premium limousine and chauffeured car service in Philadelphia, PA. Airport transfers, corporate travel, weddings and events. Elegance. Comfort. Excellence.")
