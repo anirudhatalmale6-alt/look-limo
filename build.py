@@ -3,9 +3,21 @@
 so the chrome stays identical everywhere. Run: python3 build.py"""
 import os
 
-PHONE = "929-213-8083"
-PHONE_TEL = "+19292138083"
-EMAIL = "looklimo@gmail.com"
+# Both numbers and the email, on every page - his instruction, 11 Sep.
+# These replace the older 929-213-8083 / looklimo@gmail.com that the eleven
+# original pages carried. The 929 number is now nowhere on the site; that is
+# the one consequence worth him confirming, so it is called out in the message
+# rather than left for him to notice.
+PHONE_1 = "(610) 638-4083"
+PHONE_1_TEL = "+16106384083"
+PHONE_2 = "(484) 478-2931"
+PHONE_2_TEL = "+14844782931"
+EMAIL = "looklimousine@gmail.com"
+
+# One number is still right where there is ONE button - the call-to-action bar
+# and the floating call button are a single tap, not a directory.
+PHONE = PHONE_1
+PHONE_TEL = PHONE_1_TEL
 AREA = "Philadelphia"
 
 # ---- Navigation ----
@@ -45,7 +57,8 @@ def header(active):
 <div class="topbar">
   <div class="container topbar__inner">
     <div class="topbar__left">
-      <a href="tel:{PHONE_TEL}" class="topbar__item"><span class="ic">&#9742;</span> {PHONE}</a>
+      <a href="tel:{PHONE_1_TEL}" class="topbar__item"><span class="ic">&#9742;</span> {PHONE_1}</a>
+      <a href="tel:{PHONE_2_TEL}" class="topbar__item"><span class="ic">&#9742;</span> {PHONE_2}</a>
       <a href="mailto:{EMAIL}" class="topbar__item"><span class="ic">&#9993;</span> {EMAIL}</a>
     </div>
     <div class="topbar__right">
@@ -103,7 +116,8 @@ FOOTER = f"""
     </div>
     <div class="footer__col">
       <h4>Contact</h4>
-      <a href="tel:{PHONE_TEL}">{PHONE}</a>
+      <a href="tel:{PHONE_1_TEL}">{PHONE_1}</a>
+      <a href="tel:{PHONE_2_TEL}">{PHONE_2}</a>
       <a href="mailto:{EMAIL}">{EMAIL}</a>
       <span>Philadelphia, PA</span>
       <span>Available 24/7</span>
@@ -554,7 +568,7 @@ write("fleet.html",
 # =====================================================================
 faqs = [
     ("What areas do you serve?", "Look Limo serves Philadelphia and the surrounding region, including all major airports (PHL, Newark, Trenton-Mercer) and destinations throughout Pennsylvania, New Jersey and Delaware. Travelling further? Just ask."),
-    ("How do I book a ride?", "You can book by phone at " + PHONE + ", by email at " + EMAIL + ", or by filling out the quick quote form on our Contact page. We confirm availability and pricing fast."),
+    ("How do I book a ride?", "You can book by phone at " + PHONE_1 + " or " + PHONE_2 + ", by email at " + EMAIL + ", or by filling out the quick quote form on our Contact page. We confirm availability and pricing fast."),
     ("How far in advance should I reserve?", "We recommend booking as early as possible for weddings and large groups, but we also handle last-minute and same-day requests whenever a vehicle is available - we operate 24/7."),
     ("What does it cost?", "Pricing depends on the vehicle, distance and duration. We provide clear, upfront quotes with no hidden fees or surge pricing. Contact us for a personalized quote."),
     ("Are your chauffeurs licensed and insured?", "Absolutely. Every chauffeur is professionally licensed, background-checked and fully insured, and our vehicles are inspected and maintained to the highest standards."),
@@ -597,7 +611,7 @@ contact_body = pagehero("Contact <span>Look Limo</span>",
       <p class="eyebrow">Get In Touch</p>
       <h2 class="section__title section__title--left">Request a Quote</h2>
       <p style="color:var(--muted);font-weight:300;margin-bottom:2rem">Tell us where you are going and we will get right back to you with availability and a price. Prefer to talk? Call or email us anytime - we are available around the clock.</p>
-      <div class="infoblock"><span class="ic">&#9742;</span><div><h4>Call Us</h4><a href="tel:{PHONE_TEL}">{PHONE}</a></div></div>
+      <div class="infoblock"><span class="ic">&#9742;</span><div><h4>Call Us</h4><a href="tel:{PHONE_1_TEL}">{PHONE_1}</a><br /><a href="tel:{PHONE_2_TEL}">{PHONE_2}</a></div></div>
       <div class="infoblock"><span class="ic">&#9993;</span><div><h4>Email Us</h4><a href="mailto:{EMAIL}">{EMAIL}</a></div></div>
       <div class="infoblock"><span class="ic">&#128205;</span><div><h4>Service Area</h4><p>Philadelphia, PA &amp; surrounding region</p></div></div>
       <div class="infoblock"><span class="ic">&#9200;</span><div><h4>Hours</h4><p>24 hours a day, 7 days a week</p></div></div>
@@ -641,7 +655,7 @@ contact_body = pagehero("Contact <span>Look Limo</span>",
 """.replace("{CTA}", CTA)
 write("contact.html",
       head("Contact | Look Limo Philadelphia",
-           "Contact Look Limo for luxury limousine and chauffeured car service in Philadelphia. Call " + PHONE + ", email " + EMAIL + ", or request a quote online. Available 24/7.")
+           "Contact Look Limo for luxury limousine and chauffeured car service in Philadelphia. Call " + PHONE_1 + " or " + PHONE_2 + ", email " + EMAIL + ", or request a quote online. Available 24/7.")
       + header("contact.html") + contact_body + FOOTER)
 
 # =====================================================================
@@ -668,7 +682,7 @@ booking_body = pagehero("Book <span>Your Ride</span>",
       <p class="eyebrow">Reservations</p>
       <h2 class="section__title section__title--left">Booking Request</h2>
       <p style="color:var(--muted);font-weight:300;margin-bottom:2rem">Fill in the details and we will confirm your reservation right away. Booking last minute or need something custom? Call us - we answer around the clock.</p>
-      <div class="infoblock"><span class="ic">&#9742;</span><div><h4>Book by Phone</h4><a href="tel:{PHONE_TEL}">{PHONE}</a></div></div>
+      <div class="infoblock"><span class="ic">&#9742;</span><div><h4>Book by Phone</h4><a href="tel:{PHONE_1_TEL}">{PHONE_1}</a><br /><a href="tel:{PHONE_2_TEL}">{PHONE_2}</a></div></div>
       <div class="infoblock"><span class="ic">&#9993;</span><div><h4>Book by Email</h4><a href="mailto:{EMAIL}">{EMAIL}</a></div></div>
       <div class="infoblock"><span class="ic">&#9200;</span><div><h4>Availability</h4><p>24 hours a day, 7 days a week</p></div></div>
       <div class="infoblock"><span class="ic">&#128205;</span><div><h4>Service Area</h4><p>Philadelphia, PA &amp; surrounding region</p></div></div>

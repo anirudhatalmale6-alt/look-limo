@@ -47,8 +47,13 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
 
 /* topbar */
 .topbar{background:#000;border-bottom:1px solid var(--line);font-size:.82rem;color:var(--muted)}
-.topbar__inner{display:flex;justify-content:space-between;align-items:center;height:42px;flex-wrap:wrap}
-.topbar__left{display:flex;gap:1.4rem;flex-wrap:wrap}
+/* min-height, not height. There are three items in here now - two numbers and
+   the email - and on a narrow screen they wrap onto a second line. A fixed
+   42px bar does not grow to meet them, it just crops the second row, and a
+   phone number cropped in half still looks like a phone number. */
+.topbar__inner{display:flex;justify-content:space-between;align-items:center;
+  min-height:42px;padding:.3rem 0;flex-wrap:wrap;gap:.1rem 1rem}
+.topbar__left{display:flex;gap:.3rem 1.4rem;flex-wrap:wrap}
 .topbar__item{display:inline-flex;align-items:center;gap:.4rem;transition:color .2s}
 .topbar__item:hover{color:var(--gold-2)}
 .topbar__tag{letter-spacing:2px;text-transform:uppercase;font-size:.72rem;color:var(--gold)}
@@ -321,6 +326,9 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
   .nav__cta{margin:.6rem auto}
   .nav__toggle{display:flex}
   .topbar__right{display:none}
+  .topbar__inner{justify-content:center}
+  .topbar__left{justify-content:center;gap:.25rem .9rem}
+  .topbar{font-size:.78rem}
   .section{padding:4.2rem 0}
   .grid--4,.grid--3{grid-template-columns:1fr}
   .stats__grid{grid-template-columns:1fr 1fr;gap:2rem}

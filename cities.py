@@ -342,91 +342,32 @@ def _btn_row(base, big=False):
 """
 
 
-def _topbar(base):
-    """Same shape as build.header()'s topbar, with the new contact details."""
-    return f"""
-<div class="topbar">
-  <div class="container topbar__inner">
-    <div class="topbar__left">
-      <a href="tel:{PHONE_1_TEL}" class="topbar__item"><span class="ic">&#9742;</span> {PHONE_1}</a>
-      <a href="tel:{PHONE_2_TEL}" class="topbar__item"><span class="ic">&#9742;</span> {PHONE_2}</a>
-      <a href="mailto:{CITY_EMAIL}" class="topbar__item"><span class="ic">&#9993;</span> {CITY_EMAIL}</a>
-    </div>
-    <div class="topbar__right">
-      <span class="topbar__tag">Philadelphia &middot; New Jersey &middot; New York</span>
-    </div>
-  </div>
-</div>
-"""
 
 
-def _header(base):
-    links = ""
-    for label, href in build.NAV:
-        links += f'      <a href="{base}{href}" class="nav__link">{label}</a>\n'
-    return f"""
-<header class="header" id="header">
-  <div class="container header__inner">
-    <a href="{base}index.html" class="brand">
-      <img src="{base}assets/logo.jpg" alt="Look Limo" class="brand__logo" />
-    </a>
-    <nav class="nav" id="nav">
-{links}      <a href="{base}contact.html" class="btn btn--gold nav__cta">Get a Quote</a>
-    </nav>
-    <button class="nav__toggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-"""
 
+def _chrome(html, base):
+    """build.py's own topbar/header/footer, re-pointed at a subfolder.
 
-def _footer(base, city):
-    return f"""
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__col footer__brand">
-      <img src="{base}assets/logo.jpg" alt="Look Limo" class="footer__logo" />
-      <p>Elegance. Comfort. Excellence. Chauffeured luxury transportation across
-         Philadelphia, New Jersey and New York.</p>
-    </div>
-    <div class="footer__col">
-      <h4>Service Areas</h4>
-      <a href="philadelphia.html">Philadelphia</a>
-      <a href="new-jersey.html">New Jersey</a>
-      <a href="new-york.html">New York</a>
-    </div>
-    <div class="footer__col">
-      <h4>Company</h4>
-      <a href="{base}about.html">About Us</a>
-      <a href="{base}fleet.html">Our Fleet</a>
-      <a href="{base}booking.html">Book a Ride</a>
-      <a href="{base}faq.html">FAQ</a>
-      <a href="{base}contact.html">Get a Quote</a>
-    </div>
-    <div class="footer__col">
-      <h4>Contact</h4>
-      <a href="tel:{PHONE_1_TEL}">{PHONE_1}</a>
-      <a href="tel:{PHONE_2_TEL}">{PHONE_2}</a>
-      <a href="mailto:{CITY_EMAIL}">{CITY_EMAIL}</a>
-      <span>{city['state']}</span>
-      <span>Available 24/7</span>
-    </div>
-  </div>
-  <div class="footer__bar">
-    <div class="container footer__bar-inner">
-      <span>&copy; <span id="year"></span> Look Limo. All rights reserved.</span>
-      <span>Licensed &amp; Insured &middot; Chauffeured Transportation</span>
-    </div>
-  </div>
-</footer>
-
-<a href="tel:{PHONE_1_TEL}" class="fab" aria-label="Call Look Limo">&#9742;</a>
-
-<script src="{base}script.js"></script>
-</body>
-</html>
-"""
+    These pages used to carry private copies of all three, because they were
+    the only ones showing the new phone numbers while the other eleven still
+    had the old one. He has now asked for the numbers and the email on EVERY
+    page, so the difference is gone and so are the copies - one chrome, one
+    place to change it.
+    """
+    if not base:
+        return html
+    out = html.replace('src="assets/', f'src="{base}assets/')
+    out = out.replace('href="assets/', f'href="{base}assets/')
+    out = out.replace("url('assets/", f"url('{base}assets/")
+    out = out.replace('src="script.js"', f'src="{base}script.js"')
+    # every in-site page link, taken from the nav itself plus the detail pages
+    # that only the footer links to, so a new nav entry cannot be missed here
+    pages = [h for _l, h in build.NAV] + [
+        "personal.html", "airport-transfers.html", "corporate-travel.html",
+        "school.html"]
+    for page in pages:
+        out = out.replace(f'href="{page}"', f'href="{base}{page}"')
+    return out
 
 
 def city_page(city, base="../", out_dir="preview"):
@@ -616,7 +557,9 @@ def city_page(city, base="../", out_dir="preview"):
             .replace('href="assets/', f'href="{base}assets/')
             .replace('href="styles.css"', f'href="{base}styles.css"')
             .replace("</head>", robots + extra_css + "</head>")
-            + _topbar(base) + _header(base) + body + _footer(base, city))
+            + _chrome(build.header(""), base)
+            + body
+            + _chrome(build.FOOTER, base))
     build.write(f"{out_dir}/{city['slug']}.html", html)
 
 
