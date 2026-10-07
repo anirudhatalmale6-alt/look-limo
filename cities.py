@@ -93,7 +93,7 @@ SERVICES = [
      "Guest shuttles and door-to-door hotel transfers for visiting travellers, "
      "conference attendees and hospitality partners."),
     (ico(I_GROUP), "Group Transportation",
-     "From three passengers to thirty-five in a single vehicle, and larger "
+     "From three passengers to thirty in a single vehicle, and larger "
      "parties across multiple vehicles moving on one schedule."),
 ]
 
@@ -302,7 +302,7 @@ WHY = [
      "automatically when your flight does - at no extra charge."),
     (ico(I_SPARK), "An Immaculate Fleet",
      "Late-model black vehicles kept spotless inside and out, from a Cadillac "
-     "Escalade to a thirty-five seat coach."),
+     "Escalade to a thirty-seat limo minibus."),
     (ico(I_HEADSET), "A Real Person Answers",
      "You deal with our team directly, not an app queue - and the same team "
      "sees your booking through from quote to drop-off."),
@@ -469,21 +469,14 @@ def city_page(city, base="../", out_dir="preview"):
     <div class="section__head">
       <p class="eyebrow">The Fleet</p>
       <h2 class="section__title">Vehicles Available in {esc_name}</h2>
-      <p class="section__lead">From three passengers to thirty-five, all chauffeur-driven and spotless.</p>
+      <p class="section__lead">From three passengers to thirty, all chauffeur-driven and spotless.</p>
     </div>
     {{FLEET}}
     <div class="center mt2"><a href="{base}fleet.html" class="btn btn--gold">View the Full Fleet</a></div>
   </div>
 </section>
 
-<section class="stats">
-  <div class="container grid grid--4 stats__grid">
-    <div class="stat"><strong data-count="200">0</strong><span>Vehicles in Our Fleet</span></div>
-    <div class="stat"><strong data-count="15">0</strong><span>Years of Experience</span></div>
-    <div class="stat"><strong data-count="50000">0</strong><span>Rides Completed</span></div>
-    <div class="stat"><strong data-count="24">0</strong><span>Hours a Day, 7 Days</span></div>
-  </div>
-</section>
+__STATS__
 
 <section class="section">
   <div class="container">
@@ -525,7 +518,7 @@ def city_page(city, base="../", out_dir="preview"):
 {_btn_row(base, big=True)}
   </div>
 </section>
-""".replace("{FLEET}", build.FLEET_HOME.replace('src="assets/', f'src="{base}assets/')
+""".replace("__STATS__", build.STATS_BAND).replace("{FLEET}", build.FLEET_HOME.replace('src="assets/', f'src="{base}assets/')
                                        .replace("url('assets/", f"url('{base}assets/"))
 
     # Inlined rather than added to styles.css ON PURPOSE. These pages go up

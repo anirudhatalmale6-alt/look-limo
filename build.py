@@ -158,6 +158,20 @@ def write(name, html):
 # =====================================================================
 # HOME
 # =====================================================================
+# The numbers he corrected on 11 Oct: 20 vehicles, 7 years, 15,000 rides.
+# Defined ONCE. The city pages used to carry their own copy of this band and it
+# quietly kept 200/15/50,000 when these changed - the same mistake as the
+# duplicated topbar, found only because a harness counted what the animation
+# actually settled on.
+STATS_BAND = """<section class="stats">
+  <div class="container grid grid--4 stats__grid">
+    <div class="stat"><strong data-count="20" data-suffix="+">0</strong><span>Vehicles in Our Fleet</span></div>
+    <div class="stat"><strong data-count="7" data-suffix="+">0</strong><span>Years of Experience</span></div>
+    <div class="stat"><strong data-count="15000" data-suffix="+">0</strong><span>Rides Completed</span></div>
+    <div class="stat"><strong data-count="24">0</strong><span>Hours a Day, 7 Days</span></div>
+  </div>
+</section>"""
+
 home_body = f"""
 <section class="hero" id="home">
   <div class="container hero__inner">
@@ -177,21 +191,14 @@ __HEROVID__
     <div class="section__head">
       <p class="eyebrow">The Fleet</p>
       <h2 class="section__title">A Vehicle for Every Occasion</h2>
-      <p class="section__lead">Immaculately maintained, chauffeur-driven and ready when you are - from the Cadillac Escalade to full-size coaches.</p>
+      <p class="section__lead">Immaculately maintained, chauffeur-driven and ready when you are - from the Cadillac Escalade to our 30-passenger luxury limo minibus.</p>
     </div>
     __FLEETGRID__
     <div class="center mt2"><a href="fleet.html" class="btn btn--gold">View the Full Fleet</a></div>
   </div>
 </section>
 
-<section class="stats">
-  <div class="container grid grid--4 stats__grid">
-    <div class="stat"><strong data-count="200">0</strong><span>Vehicles in Our Fleet</span></div>
-    <div class="stat"><strong data-count="15">0</strong><span>Years of Experience</span></div>
-    <div class="stat"><strong data-count="50000">0</strong><span>Rides Completed</span></div>
-    <div class="stat"><strong data-count="24">0</strong><span>Hours a Day, 7 Days</span></div>
-  </div>
-</section>
+{STATS_BAND}
 
 <section class="section about" id="about">
   <div class="container about__inner">
@@ -215,6 +222,7 @@ __HEROVID__
 {CTA}
 """
 
+
 # ---- Fleet data (client's exact vehicle list; Escalade first) ----
 _PERSON = '<circle cx="12" cy="8" r="3.3"/><path d="M5 20c0-3.6 3-6 7-6s7 2.4 7 6"/>'
 FEATURE_ICONS = {
@@ -235,9 +243,7 @@ VEHICLES = [
     ("Lincoln Aviator", 3, ["Leather Seating", "Climate Control"], "fleet-aviator.jpg", True),
     ("Chevy Suburban", 6, ["Leather Seating", "Reading Lamp"], "fleet-suburban.jpg", True),
     ("Mercedes Executive Sprinter", 14, ["Flat-Screen TV", "Leather Seating", "Stereo System"], "fleet-sprinter.jpg", True),
-    ("Minibus", 24, ["Overhead Luggage", "Reading Lamp"], "fleet-minibus.jpg", False),
     ("Luxury Limo Minibus", 30, ["Flat-Screen TV", "Privacy Panel", "Stereo System"], "fleet-limobus.jpg", False),
-    ("Bus", 35, ["Leather Seating", "Overhead Luggage", "Power Outlets"], "fleet-bus.jpg", False),
 ]
 
 def _svg(inner):
@@ -547,7 +553,7 @@ service_page(
 # FLEET
 # =====================================================================
 fleet_body = pagehero("Our <span>Fleet</span>",
-    "Immaculately maintained luxury vehicles for parties of three to thirty-five.",
+    "Immaculately maintained luxury vehicles for parties of three to thirty.",
     {"name": "Fleet", "bg": "hero.jpg"}) + f"""
 <section class="section fleet">
   <div class="container">
@@ -573,7 +579,7 @@ faqs = [
     ("What does it cost?", "Pricing depends on the vehicle, distance and duration. We provide clear, upfront quotes with no hidden fees or surge pricing. Contact us for a personalized quote."),
     ("Are your chauffeurs licensed and insured?", "Absolutely. Every chauffeur is professionally licensed, background-checked and fully insured, and our vehicles are inspected and maintained to the highest standards."),
     ("Do you offer airport meet-and-greet?", "Yes. For airport arrivals, your chauffeur tracks your flight and meets you at the terminal, ready to help with luggage - all included in the service."),
-    ("How many passengers can you accommodate?", "From a single traveller in a luxury sedan to 55 guests in a motor coach. Tell us your group size and occasion and we'll recommend the ideal vehicle."),
+    ("How many passengers can you accommodate?", "From a single traveller in a luxury SUV to 30 guests in our limo minibus. Tell us your group size and occasion and we'll recommend the ideal vehicle."),
     ("What is your cancellation policy?", "We keep it fair and flexible. Reach out as soon as your plans change and we'll work with you - full details are shared at the time of booking."),
 ]
 faq_items = ""

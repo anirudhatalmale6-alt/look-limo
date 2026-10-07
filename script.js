@@ -82,7 +82,13 @@
       if (!t0) t0 = ts;
       var p = Math.min((ts - t0) / dur, 1);
       var val = Math.floor(p * (target - start) + start);
-      el.textContent = val.toLocaleString() + (p === 1 && target >= 1000 ? '+' : (p === 1 && (target === 200 || target === 15) ? '+' : ''));
+      /* The suffix comes from the MARKUP, not from the number. It used to be
+         `target === 200 || target === 15` - the old placeholder figures - so
+         the moment the client gave real ones (20 and 7) they silently lost
+         their "+" while 15,000 kept it. A rule written against specific values
+         breaks the next time those values are correct. */
+      var suffix = (p === 1) ? (el.getAttribute('data-suffix') || '') : '';
+      el.textContent = val.toLocaleString() + suffix;
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
