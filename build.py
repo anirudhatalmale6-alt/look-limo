@@ -256,8 +256,13 @@ def fleet_cards():
         feat_html = ""
         for f in feats:
             feat_html += f'<li>{_svg(FEATURE_ICONS.get(f, ""))}<span>{f}</span></li>'
+        # The blurred copy underneath is what lets the sharp one be sized
+        # `contain` - the whole vehicle visible - while the card is still
+        # filled edge to edge. Same trick as the hero band. Without it a
+        # portrait photograph in a 3:2 box leaves black pillars.
         cards += f"""      <article class="vcard">
         <div class="vcard__img" style="background-image:url('assets/{img}')">
+          <i class="vcard__bg" style="background-image:url('assets/{img}')"></i>
           <span class="vcard__pax">{_svg(_PERSON)}{pax} Passengers</span>
           <div class="vcard__title"><h3>{name}</h3>{sim_html}</div>
         </div>

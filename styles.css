@@ -211,11 +211,31 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-
 /* vehicle cards (King-style: passenger badge + name overlay + feature chips) */
 .vcard{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s}
 .vcard:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:var(--shadow)}
-.vcard__img{position:relative;height:238px;background-size:cover;background-position:center}
-.vcard__img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.82))}
-.vcard__pax{position:absolute;top:14px;left:14px;z-index:2;display:inline-flex;align-items:center;gap:.45rem;background:#fff;color:#141414;border-radius:50px;padding:.34rem .8rem;font-size:.72rem;font-weight:600;letter-spacing:.4px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+/* A FIXED RATIO, not a fixed height. With height:238px and a fluid width the
+   box was 1.30 on a phone and 1.53 in the desktop grid, so background-size:
+   cover cropped a different slice of the photo on every screen - which is how
+   the Escalade lost its back end on the client's phone while looking fine on
+   mine.
+   The sharp photo is `contain`, so the whole vehicle is always visible
+   whatever its shape; .vcard__bg is the same photo blurred and `cover` behind
+   it so the card is still filled rather than pillarboxed. */
+.vcard__img{position:relative;aspect-ratio:3/2;background-color:#07070a;overflow:hidden}
+/* Layer order matters and is not obvious: an element's OWN background always
+   paints beneath its children, so the blurred copy had to become a child or it
+   would have covered the sharp one. The inline style on .vcard__img therefore
+   only exists as the SOURCE that ::before inherits. */
+.vcard__bg{position:absolute;inset:-8%;z-index:0;background-size:cover;
+  background-position:center;filter:blur(26px) saturate(1.15) brightness(.5)}
+.vcard__img::before{content:"";position:absolute;inset:0;z-index:1;
+  background-image:inherit;background-size:contain;background-position:center;
+  background-repeat:no-repeat}
+.vcard__img::after{content:"";position:absolute;inset:0;z-index:2;
+  background:linear-gradient(180deg,rgba(0,0,0,.05) 38%,rgba(0,0,0,.55) 70%,rgba(0,0,0,.92))}
+.vcard__pax{position:absolute;top:14px;left:14px;z-index:3;display:inline-flex;align-items:center;gap:.45rem;background:#fff;color:#141414;border-radius:50px;padding:.34rem .8rem;font-size:.72rem;font-weight:600;letter-spacing:.4px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
 .vcard__pax svg{width:15px;height:15px;stroke:#141414;fill:none;stroke-width:1.7}
-.vcard__title{position:absolute;left:16px;right:16px;bottom:13px;z-index:2}
+/* 3, above the ::after gradient. ::after is generated last, so at the same
+   z-index it paints OVER real children and the vehicle names washed out. */
+.vcard__title{position:absolute;left:16px;right:16px;bottom:13px;z-index:3}
 .vcard__title h3{color:#fff;font-size:1.75rem;line-height:1;margin:0}
 .vcard__sim{color:var(--gold-2);font-size:.72rem;font-style:italic;letter-spacing:.4px}
 .vcard__feats{list-style:none;display:flex;flex-wrap:wrap;gap:.55rem 1.1rem;padding:1.05rem 1.15rem 1.25rem;margin:0}
