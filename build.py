@@ -19,6 +19,10 @@ EMAIL = "looklimousine@gmail.com"
 PHONE = PHONE_1
 PHONE_TEL = PHONE_1_TEL
 AREA = "Philadelphia"
+# The five regions served - the client's own list, 14 Oct. Defined ONCE: the
+# contact page and the booking page both have a "Service Area" panel, and the
+# FAQ names the regions in prose, so three places must agree.
+SERVICE_AREA = "Pennsylvania, New Jersey, New York, Maryland &amp; Washington, DC"
 
 # ---- Navigation ----
 NAV = [
@@ -590,7 +594,7 @@ write("fleet.html",
 # FAQ
 # =====================================================================
 faqs = [
-    ("What areas do you serve?", "Look Limo serves Philadelphia and the surrounding region, including all major airports (PHL, Newark, Trenton-Mercer) and destinations throughout Pennsylvania, New Jersey and Delaware. Travelling further? Just ask."),
+    ("What areas do you serve?", "Based in Philadelphia, Look Limo serves " + SERVICE_AREA.replace("&amp;", "and") + ", including the major airports across all five. Travelling further? Just ask."),
     ("How do I book a ride?", "You can book by phone at " + PHONE_1 + " or " + PHONE_2 + ", by email at " + EMAIL + ", or by filling out the quick quote form on our Contact page. We confirm availability and pricing fast."),
     ("How far in advance should I reserve?", "We recommend booking as early as possible for weddings and large groups, but we also handle last-minute and same-day requests whenever a vehicle is available - we operate 24/7."),
     ("What does it cost?", "Pricing depends on the vehicle, distance and duration. We provide clear, upfront quotes with no hidden fees or surge pricing. Contact us for a personalized quote."),
@@ -636,7 +640,7 @@ contact_body = pagehero("Contact <span>Look Limo</span>",
       <p style="color:var(--muted);font-weight:300;margin-bottom:2rem">Tell us where you are going and we will get right back to you with availability and a price. Prefer to talk? Call or email us anytime - we are available around the clock.</p>
       <div class="infoblock"><span class="ic">&#9742;</span><div><h4>Call Us</h4><a href="tel:{PHONE_1_TEL}">{PHONE_1}</a><br /><a href="tel:{PHONE_2_TEL}">{PHONE_2}</a></div></div>
       <div class="infoblock"><span class="ic">&#9993;</span><div><h4>Email Us</h4><a href="mailto:{EMAIL}">{EMAIL}</a></div></div>
-      <div class="infoblock"><span class="ic">&#128205;</span><div><h4>Service Area</h4><p>Philadelphia, PA &amp; surrounding region</p></div></div>
+      <div class="infoblock"><span class="ic">&#128205;</span><div><h4>Service Area</h4><p>{SERVICE_AREA}</p></div></div>
       <div class="infoblock"><span class="ic">&#9200;</span><div><h4>Hours</h4><p>24 hours a day, 7 days a week</p></div></div>
     </div>
     <form class="quote__form" id="quoteForm" onsubmit="return handleQuote(event)">
@@ -708,7 +712,7 @@ booking_body = pagehero("Book <span>Your Ride</span>",
       <div class="infoblock"><span class="ic">&#9742;</span><div><h4>Book by Phone</h4><a href="tel:{PHONE_1_TEL}">{PHONE_1}</a><br /><a href="tel:{PHONE_2_TEL}">{PHONE_2}</a></div></div>
       <div class="infoblock"><span class="ic">&#9993;</span><div><h4>Book by Email</h4><a href="mailto:{EMAIL}">{EMAIL}</a></div></div>
       <div class="infoblock"><span class="ic">&#9200;</span><div><h4>Availability</h4><p>24 hours a day, 7 days a week</p></div></div>
-      <div class="infoblock"><span class="ic">&#128205;</span><div><h4>Service Area</h4><p>Philadelphia, PA &amp; surrounding region</p></div></div>
+      <div class="infoblock"><span class="ic">&#128205;</span><div><h4>Service Area</h4><p>{SERVICE_AREA}</p></div></div>
     </div>
 
     <form class="quote__form" id="bookingForm" onsubmit="return handleBooking(event)">
