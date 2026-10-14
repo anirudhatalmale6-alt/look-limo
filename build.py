@@ -239,12 +239,18 @@ FEATURE_ICONS = {
 }
 # (name, passengers, [features], image, "or similar" flag)
 VEHICLES = [
-    ("Cadillac Escalade", 6, ["Leather Seating", "Privacy Glass", "Premium Sound"], "fleet-escalade.jpg", False),
+    ("Cadillac Escalade", 5, ["Leather Seating", "Privacy Glass", "Premium Sound"], "fleet-escalade.jpg", False),
     ("Lincoln Aviator", 3, ["Leather Seating", "Climate Control"], "fleet-aviator.jpg", True),
     ("Chevy Suburban", 6, ["Leather Seating", "Reading Lamp"], "fleet-suburban.jpg", True),
     ("Mercedes Executive Sprinter", 14, ["Flat-Screen TV", "Leather Seating", "Stereo System"], "fleet-sprinter.jpg", True),
     ("Luxury Limo Minibus", 30, ["Flat-Screen TV", "Privacy Panel", "Stereo System"], "fleet-limobus.jpg", False),
 ]
+
+# Bags per vehicle. Client, 14 Oct: "Add 5 passengers and 5 bags to the
+# Escalade". Only figures he has given go in; a missing entry renders no pill.
+BAGS = {
+    "Cadillac Escalade": 5,
+}
 
 def _svg(inner):
     return f'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">{inner}</svg>'
@@ -253,6 +259,10 @@ def fleet_cards():
     cards = ""
     for name, pax, feats, img, sim in VEHICLES:
         sim_html = '<span class="vcard__sim">or similar</span>' if sim else ''
+        bags = BAGS.get(name)
+        bags_html = (f'<span class="vcard__pax vcard__bags">'
+                     f'{_svg(FEATURE_ICONS["Overhead Luggage"])}{bags} Bags</span>'
+                     if bags else "")
         feat_html = ""
         for f in feats:
             feat_html += f'<li>{_svg(FEATURE_ICONS.get(f, ""))}<span>{f}</span></li>'
@@ -263,7 +273,9 @@ def fleet_cards():
         cards += f"""      <article class="vcard">
         <div class="vcard__img" style="background-image:url('assets/{img}')">
           <i class="vcard__bg" style="background-image:url('assets/{img}')"></i>
-          <span class="vcard__pax">{_svg(_PERSON)}{pax} Passengers</span>
+          <div class="vcard__chips">
+            <span class="vcard__pax">{_svg(_PERSON)}{pax} Passengers</span>{bags_html}
+          </div>
           <div class="vcard__title"><h3>{name}</h3>{sim_html}</div>
         </div>
         <ul class="vcard__feats">{feat_html}</ul>
