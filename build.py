@@ -245,15 +245,17 @@ FEATURE_ICONS = {
 VEHICLES = [
     ("Cadillac Escalade", 5, ["Leather Seating", "Privacy Glass", "Premium Sound"], "fleet-escalade.jpg", False),
     ("Lincoln Aviator", 3, ["Leather Seating", "Climate Control"], "fleet-aviator.jpg", True),
-    ("Chevy Suburban", 6, ["Leather Seating", "Reading Lamp"], "fleet-suburban.jpg", True),
+    ("Chevy Suburban", 5, ["Leather Seating", "Reading Lamp"], "fleet-suburban.jpg", True),
     ("Mercedes Executive Sprinter", 14, ["Flat-Screen TV", "Leather Seating", "Stereo System"], "fleet-sprinter.jpg", True),
     ("Luxury Limo Minibus", 30, ["Flat-Screen TV", "Privacy Panel", "Stereo System"], "fleet-limobus.jpg", False),
 ]
 
 # Bags per vehicle. Client, 14 Oct: "Add 5 passengers and 5 bags to the
-# Escalade". Only figures he has given go in; a missing entry renders no pill.
+# Escalade". 21 Oct: Chevy Suburban "Same as the Escalade 5 passenger 5bags".
+# Only figures he has given go in; a missing entry renders no pill.
 BAGS = {
     "Cadillac Escalade": 5,
+    "Chevy Suburban": 5,
 }
 
 def _svg(inner):
