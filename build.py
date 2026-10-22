@@ -448,28 +448,41 @@ write("about.html",
 # =====================================================================
 # SERVICES (overview)
 # =====================================================================
+# Services overview: big photo cards with the text laid over a dark fade
+# (client, 22 Oct: "somewhat like" a reference site). Corporate = the
+# chauffeur photo he sent; School = the luxury limo (he asked for both).
+SVC_CARDS = [
+    ("personal.html", "svc-personal.jpg", "center", "Personal Transportation",
+     "Private, reliable rides for everyday journeys, dinners, nights out and special occasions - on your schedule."),
+    ("airport-transfers.html", "svc-airport.jpg", "center", "Airport Transportation",
+     "On-time pickups and drop-offs at PHL and every major airport, with flight tracking and meet-and-greet."),
+    ("corporate-travel.html", "svc-corporate-chauffeur.jpg", "35% center", "Corporate Transportation",
+     "Executive travel handled with discretion and precision - client pickups, roadshows and business accounts."),
+    ("school.html", "fleet-limobus.jpg", "center", "School Transportation",
+     "Safe, comfortable student transportation with vetted, background-checked chauffeurs."),
+]
+_svc_html = "".join(f"""
+      <a class="svc" href="{href}">
+        <span class="svc__img" style="background-image:url('assets/{img}');background-position:{pos}"></span>
+        <span class="svc__body">
+          <span class="svc__num">{i:02d}</span>
+          <h3>{title}</h3>
+          <p>{text}</p>
+          <span class="svc__link">Learn More &rarr;</span>
+        </span>
+      </a>""" for i, (href, img, pos, title, text) in enumerate(SVC_CARDS, 1))
+
 services_body = pagehero("Our <span>Services</span>",
     "Chauffeured transportation for every journey and occasion in Philadelphia.",
-    {"name": "Services", "bg": "svc-corporate.jpg"}) + f"""
+    {"name": "Services", "bg": "hero-fleet-poster.jpg"}) + f"""
 <section class="section services">
   <div class="container">
-    <div class="grid grid--4 services__grid">
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-personal.jpg')"></div>
-        <div class="scard__body"><h3>Personal</h3><p>Convenient and reliable private transportation for everyday journeys and special occasions.</p><a href="personal.html" class="scard__link">Learn More &rarr;</a></div>
-      </article>
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-airport.jpg')"></div>
-        <div class="scard__body"><h3>Airport</h3><p>Prompt airport transportation for any business trip or vacation, with flight tracking and meet-and-greet.</p><a href="airport-transfers.html" class="scard__link">Learn More &rarr;</a></div>
-      </article>
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-corporate.jpg')"></div>
-        <div class="scard__body"><h3>Corporate</h3><p>World-class executive and business transportation handled with discretion and precision.</p><a href="corporate-travel.html" class="scard__link">Learn More &rarr;</a></div>
-      </article>
-      <article class="scard">
-        <div class="scard__img" style="background-image:url('assets/svc-school.jpg')"></div>
-        <div class="scard__body"><h3>School</h3><p>Safe and reliable student transportation with vetted, background-checked chauffeurs.</p><a href="school.html" class="scard__link">Learn More &rarr;</a></div>
-      </article>
+    <div class="section__head">
+      <p class="eyebrow">What We Do</p>
+      <h2 class="section__title">Every Ride, <span class="gold-text">First Class</span></h2>
+      <p class="section__lead">Choose the service that fits your trip. Every ride comes with a professional chauffeur, a spotless vehicle and an on-time pickup.</p>
+    </div>
+    <div class="svcgrid">{_svc_html}
     </div>
   </div>
 </section>
@@ -540,10 +553,10 @@ service_page(
     "corporate-travel.html", "Corporate & Business Travel",
     "Corporate <span>Travel</span>",
     "Executive transportation that reflects your professional standards.",
-    "svc-corporate.jpg", "Corporate Travel",
+    "fleet-escalade.jpg", "Corporate Travel",
     "Impeccable Travel for Business",
     "<p>From airport pickups for visiting executives to full-day roadshows and client entertainment, Look Limo delivers discreet, dependable corporate transportation across Philadelphia.</p><p>Set up a business account for simplified billing, priority booking and consistent service your whole team can rely on.</p>",
-    "fleet-sprinter.jpg",
+    "svc-corporate-chauffeur.jpg",
     [("&#128188;", "Executive Fleet", "Luxury sedans and SUVs that make the right impression on clients."),
      ("&#128274;", "Discreet &amp; Reliable", "Professional chauffeurs trained in privacy and punctuality."),
      ("&#129534;", "Corporate Accounts", "Simplified billing, priority booking and dedicated support.")])
@@ -564,10 +577,10 @@ service_page(
     "school.html", "School Transportation",
     "School <span>Transportation</span>",
     "Safe, reliable student transportation families and schools can count on.",
-    "svc-school.jpg", "School",
+    "fleet-limobus.jpg", "School",
     "Safe, Reliable Student Transportation",
     "<p>Look Limo provides dependable school and student transportation with vetted, background-checked chauffeurs and well-maintained vehicles - so parents and schools have complete peace of mind.</p><p>From daily school runs to field trips and activity transport, we get students where they need to be safely and on time, every time.</p>",
-    "svc-school.jpg",
+    "fleet-limobus.jpg",
     [("&#128274;", "Safety First", "Background-checked chauffeurs and thoroughly inspected vehicles."),
      ("&#9200;", "Always On Time", "Punctual daily runs and reliable schedules parents can trust."),
      ("&#128652;", "Groups &amp; Trips", "From individual students to field trips and activity transport.")])
