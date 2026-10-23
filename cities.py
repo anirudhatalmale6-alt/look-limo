@@ -362,9 +362,7 @@ def _chrome(html, base):
     out = out.replace('src="script.js"', f'src="{base}script.js"')
     # every in-site page link, taken from the nav itself plus the detail pages
     # that only the footer links to, so a new nav entry cannot be missed here
-    pages = [h for _l, h in build.NAV] + [
-        "personal.html", "airport-transfers.html", "corporate-travel.html",
-        "school.html"]
+    pages = [h for _l, h in build.NAV] + [f for f, _l in build.DETAIL_PAGES]
     for page in pages:
         out = out.replace(f'href="{page}"', f'href="{base}{page}"')
     return out

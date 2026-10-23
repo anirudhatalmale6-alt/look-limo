@@ -96,6 +96,21 @@ CTA = f"""
 </section>
 """
 
+# Every service detail page, in display order: (file, footer label).
+# The footer, _rebase() and cities.py all read this ONE list, so adding a
+# service here is the only place a new page has to be registered.
+DETAIL_PAGES = [
+    ("personal.html", "Personal"),
+    ("airport-transfers.html", "Airport"),
+    ("corporate-travel.html", "Corporate"),
+    ("school.html", "School"),
+    ("birthday.html", "Birthday"),
+    ("wedding.html", "Wedding"),
+    ("prom.html", "Prom"),
+    ("luxury-package.html", "Luxury Package"),
+]
+_footer_svc = "\n".join(f'      <a href="{f}">{label}</a>' for f, label in DETAIL_PAGES)
+
 FOOTER = f"""
 <footer class="footer">
   <div class="container footer__inner">
@@ -105,10 +120,7 @@ FOOTER = f"""
     </div>
     <div class="footer__col">
       <h4>Services</h4>
-      <a href="personal.html">Personal</a>
-      <a href="airport-transfers.html">Airport</a>
-      <a href="corporate-travel.html">Corporate</a>
-      <a href="school.html">School</a>
+{_footer_svc}
     </div>
     <div class="footer__col">
       <h4>Company</h4>
@@ -366,6 +378,8 @@ _os.makedirs(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "previe
 
 
 def _rebase(html):
+    for f, _label in DETAIL_PAGES:
+        html = html.replace(f'href="{f}"', f'href="../{f}"')
     return (html.replace('src="assets/', 'src="../assets/')
                 .replace('href="assets/', 'href="../assets/')
                 .replace("url('assets/", "url('../assets/")
@@ -377,11 +391,7 @@ def _rebase(html):
                 .replace('href="fleet.html"', 'href="../fleet.html"')
                 .replace('href="booking.html"', 'href="../booking.html"')
                 .replace('href="faq.html"', 'href="../faq.html"')
-                .replace('href="contact.html"', 'href="../contact.html"')
-                .replace('href="personal.html"', 'href="../personal.html"')
-                .replace('href="airport-transfers.html"', 'href="../airport-transfers.html"')
-                .replace('href="corporate-travel.html"', 'href="../corporate-travel.html"')
-                .replace('href="school.html"', 'href="../school.html"'))
+                .replace('href="contact.html"', 'href="../contact.html"'))
 
 
 # preview/home-video.html is gone. It existed only to show the self-hosted
@@ -460,6 +470,15 @@ SVC_CARDS = [
      "Executive travel handled with discretion and precision - client pickups, roadshows and business accounts."),
     ("school.html", "fleet-limobus.jpg", "center", "School Transportation",
      "Safe, comfortable student transportation with vetted, background-checked chauffeurs."),
+    # client, 23 Oct: "add birthday, wedding, prom and luxury package"
+    ("birthday.html", "svc-events.jpg", "center", "Birthday Celebrations",
+     "Arrive together in style and let your chauffeur handle the driving between dinner, the party and home."),
+    ("wedding.html", "svc-wedding.jpg", "center", "Wedding Transportation",
+     "Elegant, on-time transportation for the couple, the wedding party and your guests."),
+    ("prom.html", "hero-image.jpg", "center", "Prom Transportation",
+     "A safe, unforgettable ride to prom and home again, with pickup times agreed with parents in advance."),
+    ("luxury-package.html", "hero.jpg", "center", "Luxury Package",
+     "Our premium, tailor-made experience - your choice of vehicle, your hours and the extras you want."),
 ]
 _svc_html = "".join(f"""
       <a class="svc" href="{href}">
@@ -502,7 +521,7 @@ services_body = pagehero("Our <span>Services</span>",
 """.replace("{CTA}", CTA)
 write("services.html",
       head("Services | Look Limo Philadelphia",
-           "Explore Look Limo services in Philadelphia: airport transfers, corporate travel, weddings, events and nights out. Luxury chauffeured transportation for every occasion.")
+           "Explore Look Limo services in Philadelphia: airport transfers, corporate and school transportation, birthdays, weddings, prom and luxury packages. Chauffeured luxury for every occasion.")
       + header("services.html") + services_body + FOOTER)
 
 # =====================================================================
@@ -584,6 +603,54 @@ service_page(
     [("&#128274;", "Safety First", "Background-checked chauffeurs and thoroughly inspected vehicles."),
      ("&#9200;", "Always On Time", "Punctual daily runs and reliable schedules parents can trust."),
      ("&#128652;", "Groups &amp; Trips", "From individual students to field trips and activity transport.")])
+
+service_page(
+    "birthday.html", "Birthday Celebrations",
+    "Birthday <span>Celebrations</span>",
+    "Celebrate in style with a chauffeured luxury ride for you and your guests.",
+    "svc-events.jpg", "Birthday",
+    "Make It a Birthday to Remember",
+    "<p>Turn the birthday into an event from the moment the car pulls up. Look Limo takes you and your guests to dinner, the party, a show or a night out in a spotless luxury vehicle - with a professional chauffeur so nobody has to drive.</p><p>Tell us the plan and the size of your group, and we'll match the right vehicle, from an SUV for a few friends to our limo minibus for the whole party.</p>",
+    "svc-events.jpg",
+    [("&#127881;", "Room for the Group", "From an SUV for a few friends to the limo minibus for up to 30 guests."),
+     ("&#128205;", "Every Stop Covered", "Dinner, the venue and home again - plan as many stops as you need."),
+     ("&#128663;", "Nobody Drives", "Your professional chauffeur handles the driving so everyone can celebrate.")])
+
+service_page(
+    "wedding.html", "Wedding Transportation",
+    "Wedding <span>Transportation</span>",
+    "Elegant, on-time transportation for the couple, the wedding party and guests.",
+    "svc-wedding.jpg", "Wedding",
+    "Arrive Beautifully on Your Day",
+    "<p>Your wedding day runs on a schedule, and so do we. Look Limo gets the couple, the wedding party and your guests to the ceremony, the photos and the reception on time, in immaculate luxury vehicles.</p><p>We plan every pickup with you in advance, so on the day you can simply enjoy it.</p>",
+    "svc-wedding.jpg",
+    [("&#128141;", "Couple, Party &amp; Guests", "Vehicles for the couple, the wedding party and guest shuttles."),
+     ("&#9200;", "Timed to Your Day", "Pickups planned around your ceremony, photos and reception."),
+     ("&#10024;", "Spotless Presentation", "Immaculate vehicles and chauffeurs dressed for the occasion.")])
+
+service_page(
+    "prom.html", "Prom Transportation",
+    "Prom <span>Transportation</span>",
+    "A safe, unforgettable ride to prom - and home again.",
+    "hero-image.jpg", "Prom",
+    "The Night They'll Talk About",
+    "<p>Make the entrance they'll remember. Look Limo takes students to prom - and home again - in a luxury vehicle with a professional, background-checked chauffeur.</p><p>Parents can plan pickup and drop-off times with us in advance, so everyone knows exactly where the group is and when they'll be home.</p>",
+    "hero-image.jpg",
+    [("&#128274;", "Safety First", "Background-checked chauffeurs and thoroughly inspected vehicles."),
+     ("&#128106;", "Parent-Friendly Planning", "Pickup and drop-off times agreed with parents ahead of the night."),
+     ("&#127775;", "Arrive Together", "Room for the whole group, from an SUV to the limo minibus.")])
+
+service_page(
+    "luxury-package.html", "Luxury Package",
+    "Luxury <span>Package</span>",
+    "Our premium, tailor-made chauffeured experience.",
+    "hero.jpg", "Luxury Package",
+    "Luxury, Tailored to You",
+    "<p>The Luxury Package is Look Limo at its best: you choose the vehicle, the hours and the route, and we build the whole experience around your occasion - an anniversary, a proposal, a VIP guest or simply a night you want to be perfect.</p><p>Tell us what you have in mind and we'll put together a package and a quote for you.</p>",
+    "hero.jpg",
+    [("&#128142;", "Your Choice of Vehicle", "Pick from our fleet - from the Cadillac Escalade to the limo minibus."),
+     ("&#9201;", "Your Hours", "Book by the hour or for the whole day or night."),
+     ("&#10024;", "Tailored Extras", "Tell us what would make it special and we'll plan it with you.")])
 
 # =====================================================================
 # FLEET
