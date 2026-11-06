@@ -165,7 +165,10 @@ def pagehero(title_html, sub, crumb):
 </section>
 """
 
+WRITTEN = []  # every page this run writes, in order - the sitemap is built from it
+
 def write(name, html):
+    WRITTEN.append(name)
     path = os.path.join(os.path.dirname(__file__), name)
     with open(path, "w") as f:
         f.write(html)
@@ -858,5 +861,21 @@ write("booking.html",
 import sys  # noqa: E402
 import cities  # noqa: E402
 cities.build_city_pages(sys.modules[__name__])
+
+# ---- search engines ------------------------------------------------------
+# Live on looklimo.com since 6 Nov. The sitemap lists exactly the pages this
+# run wrote at the site root - built from WRITTEN rather than a hand list, so a
+# new page is in it automatically. preview/ city drafts are left out until the
+# client approves them.
+SITE_URL = "https://looklimo.com/"
+_pages = [n for n in WRITTEN if "/" not in n]
+_urls = "".join(
+    f"  <url><loc>{SITE_URL}{'' if n == 'index.html' else n}</loc></url>\n" for n in _pages)
+with open(os.path.join(os.path.dirname(__file__), "sitemap.xml"), "w") as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + _urls + "</urlset>\n")
+with open(os.path.join(os.path.dirname(__file__), "robots.txt"), "w") as f:
+    f.write("User-agent: *\nDisallow: /preview/\nDisallow: /guide/\n\nSitemap: " + SITE_URL + "sitemap.xml\n")
+print("wrote sitemap.xml with", len(_pages), "pages, and robots.txt")
 
 print("\nAll pages generated.")

@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /preview/
+Disallow: /guide/
+
+Sitemap: https://looklimo.com/sitemap.xml
